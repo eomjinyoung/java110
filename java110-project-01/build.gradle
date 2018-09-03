@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'eclipse'
+}
+
+mainClassName = 'App'
+
+dependencies {
+    compile 'com.google.guava:guava:23.0'
+    testCompile 'junit:junit:4.12'
+}
+
+repositories {
+    mavenCentral()
+}
