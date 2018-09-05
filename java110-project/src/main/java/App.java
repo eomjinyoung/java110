@@ -55,9 +55,36 @@ public class App {
         }
     }
     
-    static Student[] students = new Student[100];
+    static class Teacher extends Member {
+        protected String tel;
+        protected int pay;
+        protected String subjects;
+        
+        public String getTel() {
+            return tel;
+        }
+        public void setTel(String tel) {
+            this.tel = tel;
+        }
+        public int getPay() {
+            return pay;
+        }
+        public void setPay(int pay) {
+            this.pay = pay;
+        }
+        public String getSubjects() {
+            return subjects;
+        }
+        public void setSubjects(String subjects) {
+            this.subjects = subjects;
+        }
+    }
     
-    static int index = 0;
+    static Student[] students = new Student[100];
+    static Teacher[] teachers = new Teacher[100];
+    
+    static int studentIndex = 0;
+    static int teacherIndex = 0;
     
     static Scanner keyIn = new Scanner(System.in);
 
@@ -68,6 +95,8 @@ public class App {
             
             if (menu.equals("1")) {
                 serviceStudentMenu();
+            } else if (menu.equals("2")) {
+                serviceTeacherMenu();
             } else if (menu.equals("0")){
                 System.out.println("안녕히 가세요!");
                 break;
@@ -85,6 +114,22 @@ public class App {
                 printStudents();
             } else if (command.equals("add")) {
                 inputStudents();
+            } else if (command.equals("quit")) {
+                break;
+            } else {
+                System.out.println("유효하지 않는 명령입니다.");
+            }
+        }
+    }
+    
+    private static void serviceTeacherMenu() {
+        while (true) {
+            System.out.print("강사 관리> ");
+            String command = keyIn.nextLine();
+            if (command.equals("list")) {
+                printTeachers();
+            } else if (command.equals("add")) {
+                inputTeachers();
             } else if (command.equals("quit")) {
                 break;
             } else {
@@ -120,7 +165,7 @@ public class App {
     static void printStudents() {
         int count = 0;
         for (Student s : students) {
-            if (count++ == index)
+            if (count++ == studentIndex)
                 break;
             System.out.printf("%s, %s, %s, %s, %b, %s\n", 
                     s.getName(), 
@@ -131,6 +176,23 @@ public class App {
                     s.getTel());
         }
     }
+    
+    static void printTeachers() {
+        int count = 0;
+        for (Teacher s : teachers) {
+            if (count++ == teacherIndex)
+                break;
+            System.out.printf("%s, %s, %s, %s, %d, [%s]\n", 
+                    s.getName(), 
+                    s.getEmail(), 
+                    s.getPassword(), 
+                    s.getTel(),
+                    s.getPay(),
+                    s.getSubjects());
+        }
+    }
+    
+    
     
     static void inputStudents() {
         while (true) {
@@ -154,7 +216,38 @@ public class App {
             System.out.print("전화? ");
             m.setTel(keyIn.nextLine());
             
-            students[index++] = m;
+            students[studentIndex++] = m;
+            
+            System.out.print("계속 하시겠습니까?(Y/n) ");
+            String answer = keyIn.nextLine();
+            if (answer.toLowerCase().equals("n"))
+                break;
+        }
+    }
+    
+    static void inputTeachers() {
+        while (true) {
+            Teacher m = new Teacher();
+            
+            System.out.print("이름? ");
+            m.setName(keyIn.nextLine());
+            
+            System.out.print("이메일? ");
+            m.setEmail(keyIn.nextLine());
+            
+            System.out.print("암호? ");
+            m.setPassword(keyIn.nextLine());
+            
+            System.out.print("전? ");
+            m.setTel(keyIn.nextLine());
+            
+            System.out.print("시급? ");
+            m.setPay(Integer.parseInt(keyIn.nextLine()));
+            
+            System.out.print("강의과목?(예: 자바,C,C++) ");
+            m.setSubjects(keyIn.nextLine());
+            
+            teachers[teacherIndex++] = m;
             
             System.out.print("계속 하시겠습니까?(Y/n) ");
             String answer = keyIn.nextLine();
