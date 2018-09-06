@@ -1,5 +1,14 @@
 # java110-project
 
+## v0.8
+
+- 목록을 다루는 클래스들을 리팩토링하기
+- 다형적 변수의 활용법
+- 클래스 멤버(변수,메서드,블록)와 인스턴스 멤버의 차이점
+- 생성자 사용
+- StudentList, ManagerList, TeacherList 클래스를 한 클래스로 합친다.
+- 다형적 변수를 사용하여 Student,Manager,Teacher 객체를 모두 저장할 수 있게 한다.
+
 ## tag: v0.7
 
 수업 관리 시스템 만들기
