@@ -1,5 +1,9 @@
 # java110-project
 
+## v1.0
+
+- LinkedList 구동 원리 및 적용
+
 ## v0.9
 
 - 제네릭 활용법

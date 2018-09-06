@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v1.0)
+
+- LinkedList 구동 원리 및 적용
+
 ## java110-project (tag: v0.9)
 
 - 제네릭 활용법
