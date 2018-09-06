@@ -1,6 +1,6 @@
 package bitcamp.java110.cms.util;
 
-public class LinkedList<T> {
+public class LinkedList<T> implements List<T> {
     
     private Node<T> first;
     private Node<T> last;
