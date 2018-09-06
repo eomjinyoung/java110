@@ -1,5 +1,10 @@
 # java110-project
 
+## v1.2
+
+- 자바 컬렉션 API 사용
+- 직접 제작한 List, ArrayList, LinkedList 대신에 자바에서 제공하는 Collection API를 사용한다.
+
 ## v1.1
 
 - 인터페이스 적용
