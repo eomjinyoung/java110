@@ -1,10 +1,15 @@
+package bitcamp.java110.cms;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import bitcamp.java110.cms.context.ApplicationContext;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
+import bitcamp.java110.cms.domain.Student;
 
 public class App {
+    
+    public static ArrayList<Student> students = new ArrayList<>();
     
     static Scanner keyIn = new Scanner(System.in);
 
