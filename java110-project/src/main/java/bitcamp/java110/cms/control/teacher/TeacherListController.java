@@ -1,5 +1,6 @@
 package bitcamp.java110.cms.control.teacher;
 
+import java.util.List;
 import java.util.Scanner;
 
 import bitcamp.java110.cms.App;
@@ -12,16 +13,16 @@ public class TeacherListController {
     
     @RequestMapping("teacher/list")
     public void list(Scanner keyIn) {
-        for (int i = 0; i < App.teachers.size(); i++) {
-            Teacher s = App.teachers.get(i);
-            System.out.printf("%d: %s, %s, %s, %s, %d, [%s]\n",
-                    i,
-                    s.getName(), 
-                    s.getEmail(), 
-                    s.getPassword(), 
-                    s.getTel(),
-                    s.getPay(),
-                    s.getSubjects());
+        List<Teacher> list = App.teacherDao.findAll();
+        
+        for (Teacher t : list) {
+            System.out.printf("%s, %s, %s, %s, %d, [%s]\n",
+                    t.getName(), 
+                    t.getEmail(), 
+                    t.getPassword(), 
+                    t.getTel(),
+                    t.getPay(),
+                    t.getSubjects());
         }
     }
 }
