@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import bitcamp.java110.cms.annotation.Component;
 import bitcamp.java110.cms.domain.Teacher;
 
-// name="2"
+@Component("2")
 public class TeacherController implements Controller {
     
-    public String name = "2";
     private List<Teacher> teachers = new ArrayList<>();
     
     public void service(Scanner keyIn) {
