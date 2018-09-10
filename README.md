@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v1.7)
+
+- DAO 도입하기
+
 ## java110-project (tag: v1.6)
 
 - Command 디자인 패턴 적용
