@@ -16,6 +16,10 @@
 - java.io.Serializable 인터페이스 활용
 - transient modifier 사용법
 
+## java110-project (tag: v2.0.1)
+
+- 인터페이스와 구현체를 별도의 패키지로 분리하기
+
 ## java110-project (tag: v2.0)
 
 - DAO에 파일 입출력 도입
