@@ -6,18 +6,14 @@
 
 - DAO에 JDBC 적용
 
-## java110-project (tag: v2.2)
+## java110-project (tag: v2.1)
 
 - 예외처리 적용
 
-## java110-project (tag: v2.1)
+## java110-project (tag: v2.0)
 
 - DAO에 파일 입출력 도입
 - DAO에 인터페이스 적용
-
-## java110-project (tag: v2.0)
-
-- QueryString 적용
 
 ## java110-project (tag: v1.9)
 
