@@ -1,5 +1,13 @@
 # java110-project
 
+## v1.8
+
+- 의존 객체 주입하기 
+- 미니 IoC 컨테이너 개선
+- 작업
+    - 의존 객체를 주입 받을 수 있도록 setter를 준비한다.
+    - IoC 컨테이너가 setter를 자동으로 호출하도록 애노테이션으로 표시한다.
+
 ## v1.7
 
 - DAO(Data Access Object) 도입하기
