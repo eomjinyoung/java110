@@ -6,18 +6,23 @@
 
 - DAO에 JDBC 적용
 
-## java110-project (tag: v2.1)
+## java110-project (tag: v2.2)
 
 - 예외처리 적용
 
-## java110-project (tag: v2.0)
+## java110-project (tag: v2.1)
 
 - DAO에 파일 입출력 도입
 - DAO에 인터페이스 적용
 
-## java110-project (tag: v1.9)
+## java110-project (tag: v2.0)
 
 - QueryString 적용
+
+## java110-project (tag: v1.9)
+
+- IoC 컨테이너가 객체 생성 후에 수행하는 작업을 별도의 클래스로 분리한다.
+- 향후 객체 생성 후에 또 다른 작업을 추가하기 쉽도록 한다.
 
 ## java110-project (tag: v1.8)
 
