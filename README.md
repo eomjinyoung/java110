@@ -2,13 +2,19 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
-## java110-project (tag: v2.2)
+## java110-project (tag: v2.3)
 
 - DAO에 JDBC 적용
 
-## java110-project (tag: v2.1)
+## java110-project (tag: v2.2)
 
 - 예외처리 적용
+
+## java110-project (tag: v2.1)
+
+- 객체 Serialize/Deserialize 적용
+- java.io.Serializable 인터페이스 활용
+- transient modifier 사용법
 
 ## java110-project (tag: v2.0)
 
