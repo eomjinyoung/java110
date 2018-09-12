@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v2.4)
+
+- Client/Servlet 구조로 변경
+
 ## java110-project (tag: v2.3)
 
 - DAO에 JDBC 적용
