@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bitcamp.java110.cms.annotation.Component;
+import bitcamp.java110.cms.dao.DuplicationDaoException;
 import bitcamp.java110.cms.dao.ManagerDao;
+import bitcamp.java110.cms.dao.MandatoryValueDaoException;
 import bitcamp.java110.cms.domain.Manager;
 
 @Component
@@ -67,19 +69,21 @@ public class ManagerFile2Dao implements ManagerDao {
         }
     }
     
-    public int insert(Manager manager) {
+    public int insert(Manager manager) 
+            throws MandatoryValueDaoException, DuplicationDaoException {
         // 필수 입력 항목이 비었을 때,
         if (manager.getName().length() == 0 ||
             manager.getEmail().length() == 0 ||
             manager.getPassword().length() == 0) {
-            // => 예외처리 문법이 없던 시절에는 리턴 값으로 예외 상황을 호출자에게 알렸다.
-            return -1;
+            
+            // 호출자에게 예외 정보를 만들어 던진다.
+            throw new MandatoryValueDaoException();
         }
         for (Manager item : list) {
             if (item.getEmail().equals(manager.getEmail())) {
-                // 같은 이메일의 매니저가 있을 경우, 
-                // => 예외처리 문법이 없던 시절에는 리턴 값으로 예외 상황을 호출자에게 알렸다.
-                return -2;
+                
+                // 호출자에게 예외 정보를 만들어 던진다.
+                throw new DuplicationDaoException();
             }
         }
         list.add(manager);

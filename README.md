@@ -4,7 +4,7 @@
 
 ## java110-project (tag: v2.4)
 
-- Client/Servlet 구조로 변경
+- Client/Server 구조로 변경
 
 ## java110-project (tag: v2.3)
 
