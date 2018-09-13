@@ -43,6 +43,12 @@ ALTER TABLE p1_memb
             mno -- 회원번호
         );
 
+-- 회원 유니크 인덱스
+CREATE UNIQUE INDEX UIX_p1_memb
+    ON p1_memb ( -- 회원
+        email ASC -- 이메일
+    );
+
 ALTER TABLE p1_memb
     MODIFY COLUMN mno INTEGER NOT NULL AUTO_INCREMENT COMMENT '회원번호';
 
