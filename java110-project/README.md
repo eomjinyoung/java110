@@ -1,5 +1,14 @@
 # java110-project
 
+## v2.3
+
+- DAO에 JDBC 적용
+- 작업 
+    - Data Modeling과 forward engineering 수행
+    - 테이블 준비
+    - JDBC API 활용
+    - 트랜잭션 다루기
+
 ## v2.2
 
 - 예외처리 적용

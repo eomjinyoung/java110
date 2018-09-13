@@ -4,13 +4,18 @@ import java.io.Serializable;
 
 public class Member implements Serializable {
     private static final long serialVersionUID = 1L;
-
+    
+    protected int no;
     protected String name;
     protected String email;
+    protected String password;
     
-    // transient 필드: serialize 대상에서 제외된다. 
-    protected transient String password;
-    
+    public int getNo() {
+        return no;
+    }
+    public void setNo(int no) {
+        this.no = no;
+    }
     public String getName() {
         return name;
     }

@@ -9,5 +9,7 @@ public interface ManagerDao {
             throws MandatoryValueDaoException, DuplicationDaoException;
     List<Manager> findAll();
     Manager findByEmail(String email);
-    int delete(String email);
+    default Manager findByNo(int no) {return null;}
+    default int delete(String email) {return 0;}
+    default int deleteByNo(int no) {return 0;}
 }
