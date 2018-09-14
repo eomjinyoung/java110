@@ -2,7 +2,8 @@ package bitcamp.java110.cms.control;
 
 import java.util.Scanner;
 
-import bitcamp.java110.cms.annotation.Component;
+import org.springframework.stereotype.Component;
+
 import bitcamp.java110.cms.annotation.RequestMapping;
 
 @Component
