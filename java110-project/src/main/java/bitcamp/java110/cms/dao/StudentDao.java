@@ -9,7 +9,9 @@ public interface StudentDao {
             throws MandatoryValueDaoException, DuplicationDaoException;
     List<Student> findAll();
     Student findByEmail(String email);
-    int delete(String email);
+    default Student findByNo(int no) {return null;}
+    default int delete(String email) {return 0;}
+    default int delete(int no) {return 0;}
 }
 
 

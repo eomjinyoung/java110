@@ -10,13 +10,12 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import bitcamp.java110.cms.annotation.Component;
 import bitcamp.java110.cms.dao.DuplicationDaoException;
 import bitcamp.java110.cms.dao.MandatoryValueDaoException;
 import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
 
-@Component
+//@Component
 public class StudentFile2Dao implements StudentDao {
     
     static String defaultFilename = "data/student2.dat";

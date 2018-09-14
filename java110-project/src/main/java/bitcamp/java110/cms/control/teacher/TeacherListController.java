@@ -24,11 +24,10 @@ public class TeacherListController {
         List<Teacher> list = teacherDao.findAll();
         
         for (Teacher t : list) {
-            System.out.printf("%s, %s, %s, %s, %d, [%s]\n",
+            System.out.printf("%d, %s, %s, %d, [%s]\n",
+                    t.getNo(),
                     t.getName(), 
                     t.getEmail(), 
-                    t.getPassword(), 
-                    t.getTel(),
                     t.getPay(),
                     t.getSubjects());
         }
