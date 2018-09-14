@@ -1,5 +1,12 @@
 # java110-project
 
+## v2.6
+
+- Client/Server 구조로 변경
+- 소켓 프로그래밍 구현
+- 멀티스레딩 구현
+- 프로토콜 개념 이해
+
 ## v2.5
 
 - Spring IoC 컨테이너 도입
