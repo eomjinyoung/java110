@@ -24,7 +24,7 @@ public class ManagerMysqlDao implements ManagerDao {
         this.dataSource = dataSource;
     }
 
-    public int insert(Manager manager) {
+    public int insert(Manager manager) throws DaoException {
         Statement stmt = null;
         
         Connection con = null;
@@ -67,7 +67,7 @@ public class ManagerMysqlDao implements ManagerDao {
         }
     }
     
-    public List<Manager> findAll() {
+    public List<Manager> findAll() throws DaoException {
         
         ArrayList<Manager> list = new ArrayList<>();
         
@@ -108,7 +108,7 @@ public class ManagerMysqlDao implements ManagerDao {
         return list;
     }
     
-    public Manager findByEmail(String email) {
+    public Manager findByEmail(String email) throws DaoException {
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -149,7 +149,7 @@ public class ManagerMysqlDao implements ManagerDao {
         }
     }
     
-    public Manager findByNo(int no) {
+    public Manager findByNo(int no) throws DaoException {
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -190,7 +190,7 @@ public class ManagerMysqlDao implements ManagerDao {
         }
     }
     
-    public int delete(int no) {
+    public int delete(int no) throws DaoException {
         Connection con = null;
         Statement stmt = null;
         

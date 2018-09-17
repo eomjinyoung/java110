@@ -1,6 +1,6 @@
 package bitcamp.java110.cms.control.manager;
 
-import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
+import bitcamp.java110.cms.server.Request;
+import bitcamp.java110.cms.server.Response;
 
 @Component
 public class ManagerListController { 
@@ -21,7 +23,9 @@ public class ManagerListController {
     }
 
     @RequestMapping("manager/list")
-    public void list(PrintStream out) {
+    public void list(Request request, Response response) {
+        PrintWriter out = response.getWriter();
+        
         List<Manager> list = managerDao.findAll();
         for (Manager s : list) {
             out.printf("%d, %s, %s, %s\n",
@@ -33,3 +37,15 @@ public class ManagerListController {
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
