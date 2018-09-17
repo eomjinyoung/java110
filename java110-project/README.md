@@ -1,8 +1,12 @@
 # java110-project
 
-## v2.7
+## v2.8 (Stateless)
 
-- 멀티스레드 적용하기
+- 멀티스레드 적용하기(Connection-Oriented에서 Stateless 방식으로 요청 처리)
+
+## v2.7 (Stateful)
+
+- 멀티스레드 적용하기(Connection-Oriented에서 Stateful 방식으로 요청 처리)
 - 별도의 스레드를 만들어 클라이언트의 요청을 처리하게 한다.
 - 즉 동시에 여러 클라이언트 요청을 처리한다.
 
