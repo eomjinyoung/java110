@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v2.7)
+
+- 멀티스레드 적용하기
+
 ## java110-project (tag: v2.6)
 
 - Client/Server 구조로 변경

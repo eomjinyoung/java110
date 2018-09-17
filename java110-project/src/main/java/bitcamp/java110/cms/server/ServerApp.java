@@ -52,15 +52,36 @@ public class ServerApp {
         System.out.println("서버 실행 중...");
         
         while (true) {
+            Socket socket = serverSocket.accept();
+            RequestWorker worker = new RequestWorker(socket);
+            new Thread(worker).start();
+        }
+    }
+    
+    public static void main(String[] args) throws Exception {
+        ServerApp serverApp = new ServerApp();
+        serverApp.service();
+    }
+    
+    class RequestWorker implements Runnable {
+        Socket socket;
+        
+        public RequestWorker(Socket socket) {
+            this.socket = socket;
+        }
+        
+        @Override
+        public void run() {
+            // 이 메서드에 "main" 스레드에서 분리하여 독립적으로 수행할 코드를 둔다.
             try (
-                    Socket socket = serverSocket.accept();
-                    PrintWriter out = new PrintWriter(
-                            new BufferedOutputStream(
-                                    socket.getOutputStream()));
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(
-                                    socket.getInputStream()));
-                    ) {
+                Socket socket = this.socket;
+                PrintWriter out = new PrintWriter(
+                        new BufferedOutputStream(
+                                socket.getOutputStream()));
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(
+                                socket.getInputStream()));
+            ) {
                 System.out.println(in.readLine());
                 out.println("OK:강사"); out.flush();
                 
@@ -100,15 +121,15 @@ public class ServerApp {
                     out.flush();
                 }
                 
+            } catch (Exception e) {// try
+                System.out.println(e.getMessage());
             }
-        }
-    }
+            
+        } // run() 
+        
+    } // RequestWorker class
     
-    public static void main(String[] args) throws Exception {
-        ServerApp serverApp = new ServerApp();
-        serverApp.service();
-    }
-}
+} // ServletApp class
 
 
 
