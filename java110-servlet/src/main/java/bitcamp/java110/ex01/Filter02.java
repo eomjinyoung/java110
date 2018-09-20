@@ -11,11 +11,10 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 
 // 필터를 만들었으면 어떤 요청에 대해 실행할 것인지 등록해야 한다.
 // URL은 반드시 "/"로 시작해야 한다.
-@WebFilter("/ex01/*")
+//@WebFilter("/ex01/*")
 public class Filter02 implements Filter {
 
     public Filter02() {
