@@ -31,6 +31,9 @@ public class Servlet03 extends GenericServlet {
             ServletResponse res) 
             throws ServletException, IOException {
         
+        // 테스트:
+        // => http://localhost:8888/ex04/file.html 페이지에서 값을 입력한 후 보내기 버튼 클릭
+        
         // 멀티파트 형식으로 업로드 된 데이터를 getParameter()로 값을 꺼낼 수 없다.
         // => 별도의 처리 작업을 해야 한다.
         /*
@@ -90,7 +93,50 @@ public class Servlet03 extends GenericServlet {
     }
 }
 
+// 멀티파트 POST 요청
+//
+/*
+POST /ex04/servlet03 HTTP/1.1
+Host: localhost:8888
+Content-Length: 3650
+Cache-Control: max-age=0
+Origin: http://localhost:8888
+Upgrade-Insecure-Requests: 1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarywdrfxUyAhH3oLyQ6
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,...
+Referer: http://localhost:8888/ex04/file.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,la;q=0.6
+Connection: keep-alive
 
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6
+Content-Disposition: form-data; name="name"
+
+임꺽정
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6
+Content-Disposition: form-data; name="age"
+
+20
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6
+Content-Disposition: form-data; name="working"
+
+true
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6
+Content-Disposition: form-data; name="file1"; filename="bit_logo.gif"
+Content-Type: image/gif
+
+GIF89a...
+...
+...
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6
+Content-Disposition: form-data; name="file2"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundarywdrfxUyAhH3oLyQ6--
+
+ */
 
 
 

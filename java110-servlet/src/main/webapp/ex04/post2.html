@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>POST 요청</title>
+</head>
+<body>
+<h1>POST 요청 보내기 - 한글 깨짐 해결</h1>
+<!-- 
+action 속성: 
+=> 현재 HTML의 경로와 서버에 요청하는 자원의 경로가 일치한 부분이 있다면 
+   그 부분을 생략하여 상대 경로로 표시하는 것이 유지보수에 좋다.
+=> 예)
+   현재 경로: http://localhost:8888/ex04/post2.html
+   요청 경로: http://localhost:8888/ex04/servlet05
+   즉 같은 폴더이기 때문에 : servlet05
+   
+method 속성:
+=> 생략하면 get이다.
+=> get 또는 post를 지정할 수 있다. 
+ -->
+<form action="servlet05" method="post">
+이름: <input type="text" name="name"><br>
+나이: <input type="number" name="age"><br>
+재직여부: <select name="working">
+    <option value="true">재직중</option>
+    <option value="false">미취업</option>
+</select><br>
+<button type="submit">보내기</button>
+<button type="reset">취소</button>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

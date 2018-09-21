@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>멀티파트 요청</title>
+</head>
+<body>
+<h1>POST 요청 보내기 - 멀티파트 II</h1>
+<!-- 
+파일을 업로드 하려면 파일 전송 방식(데이터 인코딩 방식)을
+멀티파트 형식으로 지정해야 한다.
+
+enctype 속성:
+=> 기본 값은  application/x-www-form-urlencoded 이다.
+=> 파일을 전송하려면 multipart/form-data 로 설정해야 한다.
+
+멀티파트로 전송하려면 반드시 "post" 방식이어야 한다.
+ -->
+<form action="servlet04" 
+      method="post" 
+      enctype="multipart/form-data">
+      
+이름: <input type="text" name="name"><br>
+나이: <input type="number" name="age"><br>
+재직여부: <select name="working">
+    <option value="true">재직중</option>
+    <option value="false">미취업</option>
+</select><br>
+사진1: <input type="file" name="file1"><br>
+사진2: <input type="file" name="file2"><br>
+<input type="submit" value="보내기">
+<input type="reset" value="취소">
+
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
