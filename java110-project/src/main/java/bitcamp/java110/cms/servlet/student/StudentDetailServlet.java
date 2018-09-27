@@ -9,23 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bitcamp.java110.cms.dao.impl.StudentMysqlDao;
+import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
-import bitcamp.java110.cms.util.DataSource;
 
 @WebServlet("/student/detail")
 public class StudentDetailServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
   
-    StudentMysqlDao studentDao;
-    
-    @Override
-    public void init() throws ServletException {
-        DataSource dataSource = new DataSource();
-        studentDao = new StudentMysqlDao();
-        studentDao.setDataSource(dataSource);
-    }
-
     @Override
     protected void doGet(
             HttpServletRequest request, 
@@ -34,6 +24,10 @@ public class StudentDetailServlet extends HttpServlet {
 
         
         int no = Integer.parseInt(request.getParameter("no"));
+        
+        StudentDao studentDao = (StudentDao)this.getServletContext()
+                .getAttribute("studentDao");
+        
         Student student = studentDao.findByNo(no);
         
         response.setContentType("text/plain;charset=UTF-8");

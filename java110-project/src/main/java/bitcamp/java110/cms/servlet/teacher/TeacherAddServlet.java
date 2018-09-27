@@ -9,23 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bitcamp.java110.cms.dao.impl.TeacherMysqlDao;
+import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
-import bitcamp.java110.cms.util.DataSource;
 
 @WebServlet("/teacher/add")
 public class TeacherAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
-    TeacherMysqlDao teacherDao;
-    
-    @Override
-    public void init() throws ServletException {
-        DataSource dataSource = new DataSource();
-        teacherDao = new TeacherMysqlDao();
-        teacherDao.setDataSource(dataSource);
-    }
-
     @Override
     protected void doGet(
             HttpServletRequest request, 
@@ -42,6 +32,10 @@ public class TeacherAddServlet extends HttpServlet {
         
         response.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
+        TeacherDao teacherDao = (TeacherDao)this.getServletContext()
+                .getAttribute("teacherDao");
+        
         if (teacherDao.insert(m) > 0) {
             out.println("저장하였습니다.");
         } else {

@@ -12,6 +12,17 @@
     </description>
     <display-name>서버 관리페이지에 출력될 웹 애플리케이션 이름</display-name>
 
+    <!-- 컨텍스트 초기화 파라미터 설정 -->
+    <context-param>
+        <param-name>aaa</param-name>
+        <param-value>okok</param-value>
+    </context-param>
+
+    <!-- 리스너 클래스에 대한 정보 설정 -->
+    <listener>
+        <listener-class>bitcamp.java110.ex07.Listener01</listener-class>
+    </listener>
+
     <!--  
     <request-character-encoding>UTF-8</request-character-encoding>
     -->
@@ -38,6 +49,15 @@
       </init-param>
       <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+      <servlet-name>Servlet05</servlet-name>
+      <servlet-class>bitcamp.java110.ex06.Servlet05</servlet-class>
+      <!-- 서블릿 초기화 파라미터 설정 -->
+      <init-param>
+        <param-name>aaa</param-name>
+        <param-value>hello</param-value>
+      </init-param>
+    </servlet>
     
     <!-- 서블릿 클래스에 대해 요청 URL을 설정 -->
     <servlet-mapping>
@@ -47,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>Servlet04</servlet-name>
         <url-pattern>/ex06/servlet04</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet05</servlet-name>
+        <url-pattern>/ex06/servlet05</url-pattern>
     </servlet-mapping>
     
     <!-- 클라이언트가 요청한 URL에 대해 기본 파일을 찾을 때 우선 순위 -->
