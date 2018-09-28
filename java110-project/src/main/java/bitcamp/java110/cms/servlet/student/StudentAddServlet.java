@@ -17,29 +17,46 @@ public class StudentAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
   
     @Override
-    protected void doGet(
+    protected void doPost(
             HttpServletRequest request, 
             HttpServletResponse response) 
             throws ServletException, IOException {
 
-        Student m = new Student();
-        m.setName(request.getParameter("name"));
-        m.setEmail(request.getParameter("email"));
-        m.setPassword(request.getParameter("password"));
-        m.setTel(request.getParameter("tel"));
-        m.setSchool(request.getParameter("school"));
-        m.setWorking(Boolean.parseBoolean(request.getParameter("working")));
+        request.setCharacterEncoding("UTF-8");
         
-        response.setContentType("text/plain;charset=UTF-8");
+        Student s = new Student();
+        s.setName(request.getParameter("name"));
+        s.setEmail(request.getParameter("email"));
+        s.setPassword(request.getParameter("password"));
+        s.setTel(request.getParameter("tel"));
+        s.setSchool(request.getParameter("school"));
+        s.setWorking(Boolean.parseBoolean(request.getParameter("working")));
+        
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
         StudentDao studentDao = (StudentDao)this.getServletContext()
                 .getAttribute("studentDao");
-        if (studentDao.insert(m) > 0) {
-            out.println("저장하였습니다.");
-        } else {
-            out.println("같은 이메일의 학생이 존재합니다.");
+        
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<title>학생 관리</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>학생 등록 결과</h1>");
+        
+        try {
+            studentDao.insert(s);
+            out.println("<p>저장하였습니다.</p>");
+        } catch(Exception e) {
+            e.printStackTrace();
+            out.println("<p>등록 중 오류 발생!</p>");
         }
+        
+        out.println("</body>");
+        out.println("</html>");
     }
  
 }
