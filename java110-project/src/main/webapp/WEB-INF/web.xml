@@ -35,18 +35,11 @@
     <request-character-encoding>UTF-8</request-character-encoding>
     -->
     
-    <!-- 서블릿 클래스에 대한 정보 설정 -->
-
-    <!-- InitServlet은 클라이언트의 요청을 처리하는 서블릿이 아니기 때문에 
-         URL을 지정하지 않는다.
-         대신 클라이언트가 요청하지 않아도 init()가 호출되어야 하기 때문에
-         loadOnStartup 배치 속성을 추가한다. 
-    -->
-    <servlet>
-      <servlet-name>InitServlet</servlet-name>
-      <servlet-class>bitcamp.java110.cms.servlet.InitServlet</servlet-class>
-      <load-on-startup>1</load-on-startup>
-    </servlet>
+    <!-- 리스너 배치하기 -->
+    <listener>
+        <listener-class>bitcamp.java110.cms.listener.ContextLoaderListener</listener-class>
+    </listener>
+    
     
     <!-- 클라이언트가 요청한 URL에 대해 기본 파일을 찾을 때 우선 순위 -->
     <welcome-file-list>
@@ -55,3 +48,13 @@
     </welcome-file-list>
 
 </web-app>
+
+
+
+
+
+
+
+
+
+
