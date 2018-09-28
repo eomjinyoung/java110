@@ -24,6 +24,11 @@ public class StudentDeleteServlet extends HttpServlet {
         
         int no = Integer.parseInt(request.getParameter("no"));
         
+        // 삭제 결과를 출력하고 1초가 경과한 후에 목록 페이지를 요청하도록 
+        // "리프래시" 명령을 설정한다.
+        // => 응답할 때 응답 헤더로 리프래시에 대한 명령을 웹브라우저에게 전달한다.
+        response.setHeader("Refresh", "1;url=list");
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
