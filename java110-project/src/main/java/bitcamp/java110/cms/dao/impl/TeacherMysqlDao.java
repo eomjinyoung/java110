@@ -219,6 +219,52 @@ public class TeacherMysqlDao implements TeacherDao {
             try {stmt.close();} catch (Exception e) {}
         }
     }
+    
+    @Override
+    public Teacher findByEmailPassword(String email, String password) throws DaoException {
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        
+        try {
+            con = dataSource.getConnection();
+            
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(
+                    "select" + 
+                    " m.mno," +
+                    " m.name," + 
+                    " m.email," + 
+                    " m.tel," + 
+                    " t.hrpay," +
+                    " t.subj" +
+                    " from p1_tchr t" + 
+                    " inner join p1_memb m on t.tno = m.mno" +
+                    " where m.email='" + email + 
+                    "' and m.pwd=password('" + password +
+                    "')");
+            
+            if (rs.next()) {
+                Teacher t = new Teacher();
+                t.setNo(rs.getInt("mno"));
+                t.setEmail(rs.getString("email"));
+                t.setName(rs.getString("name"));
+                t.setTel(rs.getString("tel"));
+                t.setPay(rs.getInt("hrpay"));
+                t.setSubjects(rs.getString("subj"));
+                
+                return t;
+            }
+            return null;
+            
+        } catch (Exception e) {
+            throw new DaoException(e);
+            
+        } finally {
+            try {rs.close();} catch (Exception e) {}
+            try {stmt.close();} catch (Exception e) {}
+        }
+    }
 }
 
 
