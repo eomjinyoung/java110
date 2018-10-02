@@ -15,8 +15,11 @@ header > h1 {
     overflow: hidden;
 }
 
-li {
+header ul {
     float: right;
+}
+
+header li {
     list-style: none;
     display: inline-block;
     margin: 0px 5px;

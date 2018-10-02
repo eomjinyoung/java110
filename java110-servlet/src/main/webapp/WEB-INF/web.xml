@@ -79,4 +79,19 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <!-- 세션의 타임아웃 설정(단위: 분) -->
+    <session-config>
+        <session-timeout>10</session-timeout>
+    </session-config>
+
+
 </web-app>
+
+
+
+
+
+
+
+
+

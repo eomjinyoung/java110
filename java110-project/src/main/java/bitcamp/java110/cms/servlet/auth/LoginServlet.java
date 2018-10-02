@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.dao.StudentDao;
@@ -125,9 +126,17 @@ public class LoginServlet extends HttpServlet {
             loginUser = teacherDao.findByEmailPassword(email, password);
         }
         
+        HttpSession session = request.getSession();
         if (loginUser != null) {
+            // 회원 정보를 세션에 보관한다.
+            session.setAttribute("loginUser", loginUser);
+            
             response.sendRedirect("../student/list");
         } else {
+            // 로그인 된 상태에서 다른 사용자로 로그인을 시도하다가 
+            // 실패한다면 무조건 세션을 무효화시킨다.
+            session.invalidate();
+
             response.sendRedirect("login");
         }
     }
