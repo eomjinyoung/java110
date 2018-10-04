@@ -1,7 +1,6 @@
 package bitcamp.java110.cms.servlet.manager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -24,61 +23,51 @@ public class ManagerListServlet extends HttpServlet {
             HttpServletResponse response) 
             throws ServletException, IOException {
         
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        
-        
+        // JSP가 사용할 데이터 준비 
         ManagerDao managerDao = (ManagerDao)this.getServletContext()
-                                      .getAttribute("managerDao");
+                .getAttribute("managerDao");
         List<Manager> list = managerDao.findAll();
         
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<title>매니저 관리</title>");
-        out.println("<link rel='stylesheet' href='../css/common.css'>");
-        out.println("<style>");
-        out.println("table, th, td {");
-        out.println("    border: 1px solid gray;");
-        out.println("}");
-        out.println("</style>");
-        out.println("</head>");
-        out.println("<body>");
+        // JSP 사용할 수 있도록 ServletRequest 보관소에 저장한다.
+        request.setAttribute("list", list);
         
-        // 페이지 머리말 포함하기
-        RequestDispatcher rd = request.getRequestDispatcher("/header");
+        // JSP로 실행을 위임하기 전에 응답 콘텐츠의 타입을 설정한다.
+        response.setContentType("text/html;charset=UTF-8");
+        
+        // JSP로 실행을 위임한다.
+        RequestDispatcher rd = request.getRequestDispatcher(
+                "/manager/list.jsp");
         rd.include(request, response);
         
-        out.println("<h1>매니저 목록</h1>");
-        
-        out.println("<p><a href='form.html'>추가</a></p>");
-        out.println("<table>");
-        out.println("<thead>");
-        out.println("<tr>");
-        out.println("    <th>번호</th> <th>이름</th> <th>이메일</th> <th>직위</th>");
-        out.println("</tr>");
-        out.println("</thead>");
-        out.println("<tbody>");
-        for (Manager m : list) {
-            out.println("<tr>");
-            out.printf("    <td>%d</td>\n", m.getNo());
-            out.printf("    <td><a href='detail?no=%d'>%s</a></td>\n",
-                    m.getNo(),
-                    m.getName());
-            out.printf("    <td>%s</td>\n", m.getEmail());
-            out.printf("    <td>%s</td>\n", m.getPosition());
-            out.println("</tr>");
-        }
-        out.println("</tbody>");
-        out.println("</table>");
-        
-        // 페이지 꼬리말 포함하기
-        rd = request.getRequestDispatcher("/footer");
-        rd.include(request, response);
-        
-        out.println("</body>");
-        out.println("</html>");
+        // 이제 서블릿은 UI를 생성하는 코드가 없다.
+        // UI 생성은 JSP 페이지에 맡겼다.
+        // Servlet 
+        //   - 클라이언트 요청을 받고 요청 파라미터 값을 사용하기 적합하게 가공하는 일을 한다.
+        //   - DAO를 호출하여 데이터를 준비한다.
+        //   - JSP에게 실행을 위임한다.
+        //   - "Controller" 컴포넌트라 부른다.
+        // DAO
+        //   - DBMS와 연동하여 데이터를 처리한다.
+        //   - "Model" 컴포넌트라 부른다.
+        // JSP
+        //   - 클라이언트가 출력할 화면을 생성한다.
+        //   - "View" 컴포넌트라 부른다.
+        //
+        // 클라이언트 요청이 들어왔을 때
+        // 이렇게 역할을 쪼개서 처리하는 방식을 
+        // "MVC 아키텍처(모델)"이라 부른다.
+        // 
+        // MVC 모델 1
+        //   요청 ---> JSP ---> DAO ---> DBMS
+        //       <---     <---     <---
+        //
+        // MVC 모델 2
+        //   요청 ---> Servlet ---> DAO ---> DBMS
+        //              ^ |
+        //              | |
+        //              | v
+        //           JSP 페이지
+        // 
     }
 }
     

@@ -17,6 +17,20 @@ public class ManagerAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     @Override
+    protected void doGet(
+            HttpServletRequest request, 
+            HttpServletResponse response) 
+                    throws ServletException, IOException {
+        
+        response.setContentType("text/html;charset=UTF-8");
+        
+        // form.jsp 인클루딩
+        RequestDispatcher rd = request.getRequestDispatcher(
+                "/manager/form.jsp");
+        rd.include(request, response);
+    }
+    
+    @Override
     protected void doPost(
             HttpServletRequest request, 
             HttpServletResponse response) 
