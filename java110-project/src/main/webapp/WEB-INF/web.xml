@@ -41,6 +41,16 @@
         <listener-class>bitcamp.java110.cms.listener.ContextLoaderListener</listener-class>
     </listener>
     
+    <servlet>
+        <servlet-name>error</servlet-name>
+        <jsp-file>/error.jsp</jsp-file>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>error</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+    
     
     <!-- 클라이언트가 요청한 URL에 대해 기본 파일을 찾을 때 우선 순위 -->
     <welcome-file-list>

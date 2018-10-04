@@ -2,6 +2,7 @@ package bitcamp.java110.cms.servlet.teacher;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,20 @@ import bitcamp.java110.cms.domain.Teacher;
 @WebServlet("/teacher/add")
 public class TeacherAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    
+    @Override
+    protected void doGet(
+            HttpServletRequest request, 
+            HttpServletResponse response) 
+                    throws ServletException, IOException {
+        
+        response.setContentType("text/html;charset=UTF-8");
+        
+        // form.jsp 인클루딩
+        RequestDispatcher rd = request.getRequestDispatcher(
+                "/teacher/form.jsp");
+        rd.include(request, response);
+    }
     
     @Override
     protected void doPost(

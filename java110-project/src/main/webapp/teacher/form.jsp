@@ -1,8 +1,13 @@
+<%@ page language="java" 
+    contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>학생 관리</title>
+<title>강사 관리</title>
+<link rel='stylesheet' href='../css/common.css'>
 <style>
 th {
     text-align: right;
@@ -10,7 +15,10 @@ th {
 </style>
 </head>
 <body>
-<h1>학생 등록</h1>
+
+<jsp:include page="../header.jsp"></jsp:include>
+
+<h1>강사 등록</h1>
 
 <form action='add' method='post'>
 <table>
@@ -32,15 +40,12 @@ th {
     <td><input type="tel" name='tel'></td>
 </tr>
 <tr>
-    <th>최종학교</th>
-    <td><input type='text' name='school'></td>
+    <th>강의료</th>
+    <td><input type='number' name='pay'></td>
 </tr>
 <tr>
-    <th>재직여부</th>
-    <td><select name='working'>
-        <option value='false'>미취업</option>
-        <option value='true'>재직중</option>
-    </select></td>
+    <th>강의과목</th>
+    <td><input type='text' name='subjects'></td>
 </tr>
 <tr>
     <th></th>
@@ -49,6 +54,8 @@ th {
 </tbody>
 </table>
 </form>
+
+<jsp:include page="../footer.jsp"/>
 
 </body>
 </html>
@@ -63,3 +70,5 @@ th {
 
 
 
+
+    
