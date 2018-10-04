@@ -1,5 +1,11 @@
 # java110-project
 
+## v4.9
+
+- JSP를 활용한 MVC 모델 1 타입 적용
+- 작업
+    - /webapp/mvc1/manager/list.jsp 생성
+
 ## v4.8
 
 - 필터를 이용하여 사용 권한 제어하기
