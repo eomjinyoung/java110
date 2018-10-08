@@ -1,5 +1,11 @@
 # java110-project
 
+## v5.2
+
+- JSTL 적용
+- 작업
+    - JSP 파일에 JSTL 태그를 적용한다.
+
 ## v5.1
 
 - EL 적용
