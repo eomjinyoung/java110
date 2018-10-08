@@ -21,9 +21,13 @@ table, th, td {
 
 <h1>매니저 상세정보(MVC)</h1>
 
+<jsp:useBean
+    scope="request"
+    id="manager"
+    class="bitcamp.java110.cms.domain.Manager"
+/>
 <%
-Manager m = (Manager)request.getAttribute("manager");
-if (m == null) {
+if (manager == null) {
 %>
 <p>해당 번호의 매니저가 없습니다!</p>
 <%    
@@ -31,18 +35,18 @@ if (m == null) {
 %>
 <table>
 <tbody>
-<tr><th>번호</th><td><%=m.getNo()%></td></tr>
-<tr><th>이름</th><td><%=m.getName()%></td></tr>
-<tr><th>이메일</th><td><%=m.getEmail()%></td></tr>
-<tr><th>암호</th><td><%=m.getPassword()%></td></tr>
-<tr><th>전화</th><td><%=m.getTel()%></td></tr>
-<tr><th>직위</th><td><%=m.getPosition()%></td></tr>
+<tr><th>번호</th><td><%=manager.getNo()%></td></tr>
+<tr><th>이름</th><td><%=manager.getName()%></td></tr>
+<tr><th>이메일</th><td><%=manager.getEmail()%></td></tr>
+<tr><th>암호</th><td><%=manager.getPassword()%></td></tr>
+<tr><th>전화</th><td><%=manager.getTel()%></td></tr>
+<tr><th>직위</th><td><%=manager.getPosition()%></td></tr>
 </tbody>
 </table>
 <button type='button' onclick='remove()'>삭제</button>
 <script>
 function remove() {
-    location.href = 'delete?no=<%=m.getNo()%>'
+    location.href = 'delete?no=<%=manager.getNo()%>'
 }
 </script>
 <%

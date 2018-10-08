@@ -29,8 +29,14 @@ table, th, td {
 </tr>
 </thead>
 <tbody>
+
+<jsp:useBean
+    scope="request"
+    id="list"
+    class="java.util.ArrayList"
+    type="java.util.List<Teacher>"
+/>
 <%
-List<Teacher> list = (List<Teacher>) request.getAttribute("list");
 for (Teacher t : list) {
 %>
 <tr>

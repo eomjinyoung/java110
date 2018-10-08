@@ -30,8 +30,24 @@ table, th, td {
 </tr>
 </thead>
 <tbody>
+
+<jsp:useBean
+    scope="request"
+    id="list"
+    class="java.util.ArrayList"
+    type="java.util.List<Manager>"
+/>
+
 <%
-List<Manager> list = (List<Manager>) request.getAttribute("list");
+/* 위의 jsp:useBean은 다음 자바코드로 변환된다.
+java.util.List<Manager> list = 
+    (java.util.List<Manager>)request.getAttribute("list");
+if (list == null) {
+    list = new java.util.ArrayList();
+    request.setAttribute("list", list);
+}
+*/
+
 for (Manager m : list) {
 %>
 <tr>
