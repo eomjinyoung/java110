@@ -1,10 +1,16 @@
 # java110-project
 
-## java110-project (tag: v5.0)
+## v5.1
+
+- EL 적용
+- 작업
+    - JSP 파일에 EL 문법을 적용한다.
+
+## v5.0
 
 - JSP 액션 태그 적용
 - 작업
-    - list.jsp, detail.jsp에 JSP 액션 태그를 적용한다.
+    - JSP 파일에 JSP 액션 태그를 적용한다.
 
 ## v4.9
 
