@@ -20,7 +20,7 @@ th {
 
 <h1>학생 등록(MVC)</h1>
 
-<form action='add' method='post'>
+<form action='add' method='post' enctype="multipart/form-data">
 <table>
 <tbody>
 <tr>
@@ -49,6 +49,10 @@ th {
         <option value='false'>미취업</option>
         <option value='true'>재직중</option>
     </select></td>
+</tr>
+<tr>
+    <th>사진</th>
+    <td><input type='file' name='file1'></td>
 </tr>
 <tr>
     <th></th>

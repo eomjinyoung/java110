@@ -50,6 +50,14 @@ public class TeacherMysqlDao implements TeacherDao {
                     + "')";
             stmt.executeUpdate(sql2);
             
+            if (teacher.getPhoto() != null) {
+                String sql3 = "insert into p1_memb_phot(mno,photo)"
+                    + " values(" + no
+                    + ", '" + teacher.getPhoto()
+                    + "')";
+                stmt.executeUpdate(sql3);
+            }
+            
             con.commit();
             return 1;
             
@@ -119,9 +127,10 @@ public class TeacherMysqlDao implements TeacherDao {
                     " m.name," + 
                     " m.email," + 
                     " t.hrpay," +
-                    " t.subj" +
+                    " mp.photo" +
                     " from p1_tchr t" + 
                     " inner join p1_memb m on t.tno = m.mno" +
+                    " left outer join p1_memb_phot mp on t.tno = mp.mno" +
                     " where m.email='" + email + "'");
             
             if (rs.next()) {
@@ -132,6 +141,7 @@ public class TeacherMysqlDao implements TeacherDao {
                 t.setTel(rs.getString("tel"));
                 t.setPay(rs.getInt("hrpay"));
                 t.setSubjects(rs.getString("subj"));
+                t.setPhoto(rs.getString("photo"));
                 
                 return t;
             }
@@ -162,9 +172,11 @@ public class TeacherMysqlDao implements TeacherDao {
                     " m.email," + 
                     " m.tel," + 
                     " t.hrpay," +
-                    " t.subj" +
+                    " t.subj," +
+                    " mp.photo" +
                     " from p1_tchr t" + 
                     " inner join p1_memb m on t.tno = m.mno" +
+                    " left outer join p1_memb_phot mp on t.tno = mp.mno" +
                     " where m.mno=" + no);
             
             if (rs.next()) {
@@ -175,6 +187,7 @@ public class TeacherMysqlDao implements TeacherDao {
                 t.setTel(rs.getString("tel"));
                 t.setPay(rs.getInt("hrpay"));
                 t.setSubjects(rs.getString("subj"));
+                t.setPhoto(rs.getString("photo"));
                 
                 return t;
             }
@@ -204,6 +217,9 @@ public class TeacherMysqlDao implements TeacherDao {
             
             if (count == 0)
                 throw new Exception("일치하는 번호가 없습니다.");
+            
+            sql = "delete from p1_memb_phot where mno=" + no;
+            stmt.executeUpdate(sql);
             
             String sql2 = "delete from p1_memb where mno=" + no;
             stmt.executeUpdate(sql2);
