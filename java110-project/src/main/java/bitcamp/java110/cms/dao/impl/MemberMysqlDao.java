@@ -61,9 +61,7 @@ public class MemberMysqlDao implements MemberDao {
             stmt = con.createStatement();
             
             String sql = "delete from p1_memb where mno=" + no;
-            stmt.executeUpdate(sql);
-            
-            return 1;
+            return stmt.executeUpdate(sql);
             
         } catch (Exception e) {
             throw new DaoException(e);
