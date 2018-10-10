@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import bitcamp.java110.cms.domain.Member;
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class AuthFilter implements Filter {
     @Override
     public void doFilter(

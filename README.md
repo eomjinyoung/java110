@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v5.4)
+
+- Service 컴포넌트 적용
+
 ## java110-project (tag: v5.3)
 
 - 파일 업로드 적용
