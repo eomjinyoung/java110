@@ -6,7 +6,7 @@
 - 작업
     - 트랜잭션을 위해 DataSource의 Connection을 관리하는 클래스를 작성한다.
     - DataSource는 트랜잭션을 사용할 때와 아닐 때를 다룬다.
-    
+    - 서비스 객체에 트랜잭션 관리자를 적용한다.
 
 ## java110-project (tag: v5.4)
 
