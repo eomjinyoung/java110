@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
+import bitcamp.java110.cms.service.TeacherService;
 
 @WebServlet("/teacher/list")
 public class TeacherListServlet extends HttpServlet {
@@ -23,10 +23,10 @@ public class TeacherListServlet extends HttpServlet {
             HttpServletResponse response) 
             throws ServletException, IOException {
         
-        TeacherDao teacherDao = (TeacherDao)this.getServletContext()
-                .getAttribute("teacherDao");
+        TeacherService teacherService = (TeacherService)this.getServletContext()
+                .getAttribute("teacherService");
         
-        List<Teacher> list = teacherDao.findAll();
+        List<Teacher> list = teacherService.list();
         request.setAttribute("list", list);
         
         response.setContentType("text/html;charset=UTF-8");

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
+import bitcamp.java110.cms.service.StudentService;
 
 @WebServlet("/student/detail")
 public class StudentDetailServlet extends HttpServlet {
@@ -25,10 +25,10 @@ public class StudentDetailServlet extends HttpServlet {
         
         int no = Integer.parseInt(request.getParameter("no"));
         
-        StudentDao studentDao = (StudentDao)this.getServletContext()
-                .getAttribute("studentDao");
+        StudentService studentService = (StudentService)this.getServletContext()
+                .getAttribute("studentService");
         
-        Student s = studentDao.findByNo(no);
+        Student s = studentService.get(no);
         request.setAttribute("student", s);
         
         response.setContentType("text/html;charset=UTF-8");
