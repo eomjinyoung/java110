@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v5.5)
+
+- 트랜잭션 관리하기
+
 ## java110-project (tag: v5.4)
 
 - Service 컴포넌트 적용
