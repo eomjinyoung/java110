@@ -1,5 +1,13 @@
 # java110-project
 
+## v5.6
+
+- Statement를 PreparedStatement로 변경하기
+    - SQL 삽입 해킹을 방지하기
+- 작업
+    - 로그인 방어막을 뚫기를 통해 보안 문제 확인
+    - DAO의 모든 SQL문을 PreparedStatement로 교체한다.
+
 ## v5.5
 
 - 트랜잭션 관리하기

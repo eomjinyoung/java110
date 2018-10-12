@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v5.6)
+
+- Statement를 PreparedStatement로 변경하기
+
 ## java110-project (tag: v5.5)
 
 - 트랜잭션 관리하기
