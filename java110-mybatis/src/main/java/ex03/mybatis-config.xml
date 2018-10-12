@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis-config.xml -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- 아래의 environment 태그에서 사용할 DB 연결 정보가 들어 있는 
+       .properties 파일을 등록한다. 
+       단 .properties 파일은 자바 classpath에 있어야 한다.
+  -->
+  <properties resource="ex03/jdbc.properties"></properties>  
+
+  <!-- DBMS 연결 정보 설정 -->
+  <environments default="development">
+  
+    <!-- 개발용, 테스트용, 운영용으로 여러 개의 연결 정보를 정의한 후 
+         실행할 때 사용할 DB를 선택한다. 
+         어떻게 위의 태그에서 default 속성에 사용할 DB를 지정한다. 
+    -->
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <!-- SQL 코드가 들어있는 파일 정보 -->
+  <mappers>
+    <mapper resource="ex03/MemberDao.xml"/>
+  </mappers>
+</configuration>
+
+
+
+
+
+
+

@@ -1,18 +1,13 @@
-// 주제: JDBC API 사용하기
-package ex01;
+// 주제: factory method 및 builder 디자인 패턴 적용
+package ex02;
 
 import java.util.List;
 
 public class Test01 {
 
     public static void main(String[] args) throws Exception {
-        DataSource ds = new DataSource(
-            "org.mariadb.jdbc.Driver",
-            "jdbc:mariadb://localhost:3306/studydb",
-            "study",
-            "1111");
-        MemberDao memberDao = new MemberDao();
-        memberDao.setDataSource(ds);
+        MemberDaoFactory factory = new DaoBuilder().build();
+        MemberDao memberDao = factory.createMemberDao();
         
         List<Member> list = memberDao.findAll();
         
@@ -20,6 +15,9 @@ public class Test01 {
             System.out.printf("%d, %s, %s, %s\n", 
                     m.getNo(), m.getName(), m.getEmail(), m.getTel());
         }
+        
+        
+        
     }
 
 }
