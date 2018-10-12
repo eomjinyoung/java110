@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+dependencies {
+    // mariadb jdbc driver 
+    compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.3.0'
+    
+    compile 'com.google.guava:guava:23.0'
+    testCompile 'junit:junit:4.12'
+}
+
+repositories {
+    mavenCentral() //https://repo.maven.apache.org/maven2/
+}
