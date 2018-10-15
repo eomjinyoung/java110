@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MemberDao 클래스가 사용할 SQL이 들어 있는 파일 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boarddao">
+
+  <resultMap type="board" id="boardMap">
+    <id column="bno" property="no"/>
+    <result column="titl" property="title"/>
+    <result column="cont" property="content"/>
+    <result column="cnt" property="viewCount"/>
+    <result column="cdt" property="createdDate"/>
+    <result column="mno" property="memberNo"/>
+    <result column="name" property="writer"/>
+    <result column="email" property="email"/>
+    <result column="tel" property="tel"/>
+  </resultMap>
+
+  <select id="findAll" resultMap="boardMap" parameterType="map">
+    select
+      b.bno,
+      b.titl, 
+      b.cnt, 
+      b.cdt,
+      b.mno,
+      m.name
+    from p1_board b
+        inner join p1_memb m using (mno)
+    limit #{rowNo}, #{pageSize} 
+  </select>
+  
+  <select id="findByNo" resultMap="boardMap" parameterType="int">
+    select
+      b.bno,
+      b.titl, 
+      b.cont,
+      b.cnt, 
+      b.cdt,
+      b.mno,
+      m.name,
+      m.email,
+      m.tel
+    from p1_board b
+        inner join p1_memb m using (mno)
+    where bno=#{value}
+  </select>
+  
+  <insert id="insert" parameterType="board"
+          useGeneratedKeys="true" keyColumn="bno" keyProperty="no">
+    insert into p1_board(titl,cont,cnt,cdt,mno)
+    values(#{title},#{content},0,now(),#{memberNo})
+  </insert>
+  
+  <delete id="delete" parameterType="int">
+    delete from p1_board 
+    where bno=#{value}
+  </delete>
+</mapper>
+
+
+
+
+
+
+
+
+
