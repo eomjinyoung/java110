@@ -5,11 +5,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     
-  <properties resource="ex07/jdbc.properties"></properties>  
+  <properties resource="ex08/jdbc.properties"></properties>  
 
   <typeAliases>
-    <typeAlias type="ex07.Member" alias="member"/>
-    <typeAlias type="ex07.Board" alias="board"/>
+    <typeAlias type="ex08.Member" alias="member"/>
+    <typeAlias type="ex08.Board" alias="board"/>
+    <typeAlias type="ex08.AttachFile" alias="attachfile"/>
   </typeAliases>
 
   <environments default="development">
@@ -25,7 +26,7 @@
   </environments>
   
   <mappers>
-    <mapper resource="ex07/BoardDao-01.xml"/>
+    <mapper resource="ex08/BoardDao-01.xml"/>
   </mappers>
 </configuration>
 

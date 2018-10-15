@@ -1,4 +1,4 @@
-package ex07;
+package ex08;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-public class MemberDao { 
+public class BoardDao { 
 
     // Mybatis 객체를 사용하기 위해 주입받는다.
     SqlSessionFactory sqlSessionFactory;
@@ -15,11 +15,11 @@ public class MemberDao {
         this.sqlSessionFactory = sqlSessionFactory;
     }
 
-    public int insert(Member member) {
+    public int insert(Board board) {
         // Mybatis는 autoCommit 기본 값이 false이다. 
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            int count = sqlSession.insert("memberdao.insert", member);
+            int count = sqlSession.insert("boarddao.insert", board);
             sqlSession.commit();
             return count;
         } finally {
@@ -31,7 +31,7 @@ public class MemberDao {
         // Mybatis는 autoCommit 기본 값이 false이다. 
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            int count = sqlSession.delete("memberdao.delete", no);
+            int count = sqlSession.delete("boarddao.delete", no);
             sqlSession.commit();
             return count;
         } finally {
@@ -39,19 +39,29 @@ public class MemberDao {
         }
     }
     
-    public List<Member> findAll(Map<String,Object> params) {
+    public List<Board> findAll(Map<String,Object> params) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            return sqlSession.selectList("memberdao.findAll", params);
+            return sqlSession.selectList("boarddao.findAll", params);
         } finally {
             sqlSession.close();
         }
     }
     
-    public Member findByNo(int no) {
+    public Board findByNo(int no) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            return sqlSession.selectOne("memberdao.findByNo", no);
+            return sqlSession.selectOne("boarddao.findByNo", no);
+        } finally {
+            sqlSession.close();
+        }
+    }
+    
+    public List<AttachFile> findAttachFiles(int boardNo) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            return sqlSession.selectList(
+                    "boarddao.findAttachFiles", boardNo);
         } finally {
             sqlSession.close();
         }

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MemberDao 클래스가 사용할 SQL이 들어 있는 파일 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boarddao">
+
+  <resultMap type="board" id="boardMap">
+    <id column="bno" property="no"/>
+    <result column="titl" property="title"/>
+    <result column="cont" property="content"/>
+    <result column="cnt" property="viewCount"/>
+    <result column="cdt" property="createdDate"/>
+    <result column="mno" property="memberNo"/>
+    <result column="name" property="writer"/>
+  </resultMap>
+  
+  <resultMap type="board" id="boardMap2">
+    <id column="bno" property="no"/>
+    <result column="titl" property="title"/>
+    <result column="cont" property="content"/>
+    <result column="cnt" property="viewCount"/>
+    <result column="cdt" property="createdDate"/>
+    <association property="member" javaType="member">
+	    <id column="mno" property="no"/>
+	    <result column="name" property="name"/>
+	    <result column="email" property="email"/>
+	    <result column="tel" property="tel"/>
+    </association>
+    <collection property="attachFiles" ofType="attachfile">
+        <id column="afno" property="no"/>
+        <result column="fi_nm" property="filename"/>
+    </collection>
+  </resultMap>
+  
+  <select id="findAll" resultMap="boardMap" parameterType="map">
+    select
+      b.bno,
+      b.titl, 
+      b.cnt, 
+      b.cdt,
+      b.mno,
+      m.name
+    from p1_board b
+        inner join p1_memb m using (mno)
+    limit #{rowNo}, #{pageSize} 
+  </select>
+  
+  <select id="findByNo" resultMap="boardMap2" parameterType="int">
+    select
+      b.bno,
+      b.titl, 
+      b.cont,
+      b.cnt, 
+      b.cdt,
+      b.mno,
+      m.name,
+      m.email,
+      m.tel,
+      af.afno,
+      af.fi_nm
+    from p1_board b
+        inner join p1_memb m using (mno)
+        left outer join p1_att_file af on af.bno=b.bno
+    where b.bno=#{value}
+  </select>
+  
+  <insert id="insert" parameterType="board"
+          useGeneratedKeys="true" keyColumn="bno" keyProperty="no">
+    insert into p1_board(titl,cont,cnt,cdt,mno)
+    values(#{title},#{content},0,now(),#{memberNo})
+  </insert>
+  
+  <delete id="delete" parameterType="int">
+    delete from p1_board 
+    where bno=#{value}
+  </delete>
+  
+  <select id="findAttachFiles" 
+          resultType="attachfile" 
+          parameterType="int">
+    select 
+        afno no,
+        fi_nm filename,
+        bno boardNo
+    from 
+        p1_att_file
+    where
+        bno=#{value}
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+

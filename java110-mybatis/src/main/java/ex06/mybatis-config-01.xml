@@ -8,7 +8,6 @@
   <properties resource="ex06/jdbc.properties"></properties>  
 
   <typeAliases>
-    <typeAlias type="ex06.Member" alias="member"/>
     <typeAlias type="ex06.Board" alias="board"/>
   </typeAliases>
 
@@ -26,7 +25,6 @@
   
   <mappers>
     <mapper resource="ex06/BoardDao-01.xml"/>
-    <mapper resource="ex06/MemberDao-01.xml"/>
   </mappers>
 </configuration>
 

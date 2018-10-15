@@ -19,10 +19,6 @@ public class Test02 {
         BoardDao boardDao = new BoardDao();
         boardDao.setSqlSessionFactory(sqlSessionFactory);
         
-        MemberDao memberDao = new MemberDao();
-        memberDao.setSqlSessionFactory(sqlSessionFactory);
-        
-        
         Board board = boardDao.findByNo(1);
         System.out.printf("번호:%d\n", board.getNo());
         System.out.printf("제목:%s\n", board.getTitle());

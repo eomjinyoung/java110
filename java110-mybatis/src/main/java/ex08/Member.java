@@ -1,4 +1,4 @@
-package ex06;
+package ex08;
 
 import java.io.Serializable;
 
