@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MemberDao 클래스가 사용할 SQL이 들어 있는 파일 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberdao">
+
+  <resultMap type="member" id="memberMap">
+    <id column="mno" property="no"/>
+    <result column="name" property="name"/>
+    <result column="email" property="email"/>
+    <result column="tel" property="tel"/>
+  </resultMap>
+
+  <sql id="select1">
+    select 
+      m.mno,
+      m.name, 
+      m.email, 
+      m.tel
+  </sql>
+
+  <!-- dynamic sql 태그를 사용하여 SQL을 변경하기 -->
+  <select id="findAll" resultMap="memberMap" parameterType="map">
+    <include refid="select1"></include>
+    from p1_memb m
+    order by
+        <choose>
+	        <when test="sort == 'email-desc'">email desc</when> 
+	        <when test="sort == 'email-asc'">email asc</when>
+	        <when test="sort == 'name-desc'">name desc</when>
+	        <when test="sort == 'name-asc'">name asc</when>
+	        <otherwise>mno desc</otherwise>
+        </choose>
+    limit #{rowNo}, #{pageSize} 
+  </select>
+  
+  <!-- dynamic sql 태그를 사용하여 SQL을 변경하기 -->
+  <select id="findAll-04" resultMap="memberMap" parameterType="map">
+    <include refid="select1"></include>
+    from p1_memb m
+    order by
+        <if test="sort == 'email-desc'">email desc</if> 
+        <if test="sort == 'email-asc'">email asc</if>
+        <if test="sort == 'name-desc'">name desc</if>
+        <if test="sort == 'name-asc'">name asc</if>
+        <if test="sort == null">mno desc</if>
+    limit #{rowNo}, #{pageSize} 
+  </select>
+
+  <!-- order by 구문이 SQL이라면 ${} 사용해 정렬을 설정하는 SQL을 삽입하면 안되는가? -->
+  <select id="findAll-03" resultMap="memberMap" parameterType="map">
+    <include refid="select1"></include>
+    from p1_memb m
+    order by ${sort}
+    limit #{rowNo}, #{pageSize} 
+  </select>
+  
+  <!-- order by 구문에서 컬럼의 정렬을 지정하는 문장은 값이 아니라 
+       SQL 문법이기 때문에 #{}으로 지정할 수 없다. 
+       #{}을 사용하여 컬럼명과 정렬을 묶어서 설정하려 해도 동작하지 않는다. -->
+  <select id="findAll-02" resultMap="memberMap" parameterType="map">
+    <include refid="select1"></include>
+    from p1_memb m
+    order by #{sort}
+    limit #{rowNo}, #{pageSize} 
+  </select>
+  
+  <!-- order by 구문에서 컬럼의 정렬을 지정하는 문장은 값이 아니라 
+       SQL 문법이기 때문에 #{}으로 지정할 수 없다. -->
+  <select id="findAll-01" resultMap="memberMap" parameterType="map">
+    <include refid="select1"></include>
+    from p1_memb m
+    order by email #{sort}
+    limit #{rowNo}, #{pageSize} 
+  </select>
+  
+  
+</mapper>
+
+
+
+
+
+
+
+
+

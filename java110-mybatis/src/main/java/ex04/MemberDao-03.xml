@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MemberDao 클래스가 사용할 SQL이 들어 있는 파일 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberdao">
+
+  <resultMap type="member" id="memberMap">
+    <id column="mno" property="no"/>
+    <result column="name" property="name"/>
+    <result column="email" property="email"/>
+    <result column="tel" property="tel"/>
+  </resultMap>
+
+  <sql id="select1">
+    select 
+      m.mno,
+      m.name, 
+      m.email, 
+      m.tel
+  </sql>
+
+  <!-- where 태그 사용하기 => where 절 만들기 -->
+  <select id="findAll" resultMap="memberMap" parameterType="map">
+    <include refid="select1"></include>
+    from p1_memb m
+    <where>
+        name in 
+        <foreach collection="names" item="name" 
+                 open="(" separator="," close=")">
+           #{name}
+        </foreach>
+    </where>
+    limit #{rowNo}, #{pageSize} 
+  </select>
+
+  <!-- where 태그 사용하기 => where 절 만들기 -->
+  <select id="findAll-01" resultMap="memberMap" parameterType="map">
+    <include refid="select1"></include>
+    from p1_memb m
+    <where>
+        <if test="nameValue != null">
+            name like #{nameValue}
+        </if>
+        <if test="emailValue != null">
+            or email like #{emailValue}
+        </if>
+    </where>
+    limit #{rowNo}, #{pageSize} 
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+

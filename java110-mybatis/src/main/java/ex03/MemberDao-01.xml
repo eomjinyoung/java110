@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MemberDao 클래스가 사용할 SQL이 들어 있는 파일 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberdao">
+
+  <!-- SQL을 작성할 SQL의 id는 가능한 DAO의 메서드명과 같게 하라!
+       나중에 유지보수할 때 찾기 쉽다.
+  -->
+  <select id="findAll" resultType="ex03.Member">
+    select 
+      m.mno as no,
+      m.name, 
+      m.email, 
+      m.tel 
+    from p1_memb m
+  </select>
+  
+  <select id="findByNo" resultType="ex03.Member" parameterType="int">
+    select 
+      m.mno as no,
+      m.name, 
+      m.email, 
+      m.tel 
+    from p1_memb m
+    where mno=#{value}
+  </select>
+  
+  <insert id="insert" parameterType="ex03.Member"
+          useGeneratedKeys="true" keyColumn="mno" keyProperty="no">
+    insert into p1_memb(name,email,pwd,tel,cdt)
+    values(#{name},#{email},password(#{password}),#{tel},now())
+  </insert>
+  
+  <delete id="delete" parameterType="int">
+    delete from p1_memb 
+    where mno=#{okok}
+  </delete>
+</mapper>
+
+
+
+
+
+
+
+
+

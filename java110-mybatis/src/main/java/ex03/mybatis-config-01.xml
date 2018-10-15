@@ -4,17 +4,11 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    
   <!-- 아래의 environment 태그에서 사용할 DB 연결 정보가 들어 있는 
        .properties 파일을 등록한다. 
        단 .properties 파일은 자바 classpath에 있어야 한다.
   -->
   <properties resource="ex03/jdbc.properties"></properties>  
-
-  <!-- SQL Mapper 파일에서 사용할 도메인 클래스의 별명을 지정한다. -->
-  <typeAliases>
-    <typeAlias type="ex03.Member" alias="member"/>
-  </typeAliases>
 
   <!-- DBMS 연결 정보 설정 -->
   <environments default="development">

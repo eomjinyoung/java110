@@ -5,14 +5,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberdao">
 
-  <!-- 컬럼명과 자바 객체의 프로퍼티명이 다를 경우,
-       컬럼명에 대해 프로퍼티 이름과 같게 별명을 지정해야만 
-       제대로 DB 컬럼 값이 객체에 저장된다.
-       그러나 매번 select를 실행할 때마다 컬럼에 대해 별명을 지정하는 것은
-       매우 불편하고 번거로운 일이다.
-       이를 해결하기 위해 다음 태그를 사용한다.
-       즉 컬럼과 프로퍼티를 맺어주는 선언이다.   
-  -->
   <resultMap type="member" id="memberMap">
     <id column="mno" property="no"/>
     <result column="name" property="name"/>
@@ -20,9 +12,6 @@
     <result column="tel" property="tel"/>
   </resultMap>
 
-  <!-- 여러 곳에서 공통으로 사용하는 SQL 문이 있다면 
-       다음과 같이 별도로 정의해 놓고 필요한 곳에서 삽입한다. 
-  -->
   <sql id="select1">
     select 
       m.mno,
@@ -31,12 +20,10 @@
       m.tel
   </sql>
 
-  <!-- SQL을 작성할 SQL의 id는 가능한 DAO의 메서드명과 같게 하라!
-       나중에 유지보수할 때 찾기 쉽다.
-  -->
-  <select id="findAll" resultMap="memberMap">
+  <select id="findAll" resultMap="memberMap" parameterType="map">
     <include refid="select1"></include>
     from p1_memb m
+    limit #{rowNo}, #{pageSize} 
   </select>
   
   <select id="findByNo" resultMap="memberMap" parameterType="int">
