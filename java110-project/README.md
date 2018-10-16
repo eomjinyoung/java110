@@ -1,5 +1,16 @@
 # java110-project
 
+## v5.8
+
+- Mybatis에서 자동으로 생성해주는 Mapper(DAO) 객체 사용하기
+- Mybatis에서 트랜잭션 다루기
+- 작업
+    - 기존 DAO 구현체를 모두 제거한다.
+    - Service 객체에 SqlSessionFactory를 주입한다.
+    - Service 객체는 SqlSessionFactory를 통해 DAO를 얻어 쓴다.
+    - insert, delete 메서드에 트랜잭션을 적용한다.
+    - ContextLoaderListener 변경
+
 ## v5.7
 
 - Mybatis persistence framework 적용하기
