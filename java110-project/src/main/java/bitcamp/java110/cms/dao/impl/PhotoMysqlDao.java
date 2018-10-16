@@ -1,8 +1,10 @@
 package bitcamp.java110.cms.dao.impl;
 
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import bitcamp.java110.cms.dao.DaoException;
 import bitcamp.java110.cms.dao.PhotoDao;
 
 public class PhotoMysqlDao implements PhotoDao {
@@ -14,53 +16,19 @@ public class PhotoMysqlDao implements PhotoDao {
     }
 
     @Override
-    public int insert(int no, String filename) {
-        /*
-        Connection con = null;
-        PreparedStatement stmt = null;
-        
-        try {
-            con = dataSource.getConnection();
-            String sql = "insert into p1_memb_phot(mno,photo) values(?,?)";
-            stmt = con.prepareStatement(sql);
-            stmt.setInt(1, no);
-            stmt.setString(2, filename);
-            return stmt.executeUpdate();
-            
-        } catch (Exception e) {
-            throw new DaoException(e);
-            
-        } finally {
-            try {stmt.close();} catch (Exception e) {}
-            dataSource.returnConnection(con);
+    public int insert(Map<String,Object> params) {
+        try (SqlSession session = sqlSessionFactory.openSession(true)) {
+            return session.insert(
+                "bitcamp.java110.cms.dao.PhotoDao.insert", params);
         }
-        */
-        return 0;
     }
     
     @Override
-    public int delete(int no) throws DaoException {
-        /*
-        Connection con = null;
-        PreparedStatement stmt = null;
-        
-        try {
-            con = dataSource.getConnection();
-            String sql = "delete from p1_memb_phot where mno=?";
-            stmt = con.prepareStatement(sql);
-            stmt.setInt(1, no);
-            return stmt.executeUpdate();
-            
-        } catch (Exception e) {
-            throw new DaoException(e);
-            
-        } finally {
-            try {stmt.close();} catch (Exception e) {}
-            dataSource.returnConnection(con);
+    public int delete(int no) {
+        try (SqlSession session = sqlSessionFactory.openSession(true)) {
+            return session.delete(
+                "bitcamp.java110.cms.dao.PhotoDao.delete", no);
         }
-        */
-        return 0;
-        
     }
 }
 

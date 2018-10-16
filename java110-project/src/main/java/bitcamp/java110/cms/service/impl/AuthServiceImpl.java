@@ -1,5 +1,7 @@
 package bitcamp.java110.cms.service.impl;
 
+import java.util.HashMap;
+
 import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.dao.TeacherDao;
@@ -27,8 +29,13 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public Member getMember(
             String email, String password, String memberType) {
+        
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("email", email);
+        params.put("password", password);
+        
         if (memberType.equals("manager")) {
-            return managerDao.findByEmailPassword(email, password);
+            return managerDao.findByEmailPassword(params);
             
         } else if (memberType.equals("student")) {
             return studentDao.findByEmailPassword(email, password);
