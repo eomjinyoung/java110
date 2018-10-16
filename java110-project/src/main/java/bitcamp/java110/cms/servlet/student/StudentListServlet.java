@@ -22,11 +22,26 @@ public class StudentListServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) 
             throws ServletException, IOException {
+
+        int pageNo = 1;
+        int pageSize = 3;
+        
+        if (request.getParameter("pageNo") != null) {
+            pageNo = Integer.parseInt(request.getParameter("pageNo"));
+            if (pageNo < 1)
+                pageNo = 1;
+        }
+        
+        if (request.getParameter("pageSize") != null) {
+            pageSize = Integer.parseInt(request.getParameter("pageSize"));
+            if (pageSize < 3 || pageSize > 10)
+                pageSize = 3;
+        }
         
         StudentService studentService = (StudentService)this.getServletContext()
                 .getAttribute("studentService");
         
-        List<Student> list = studentService.list();
+        List<Student> list = studentService.list(pageNo, pageSize);
         request.setAttribute("list", list);
         
         response.setContentType("text/html;charset=UTF-8");

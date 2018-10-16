@@ -1,5 +1,15 @@
 # java110-project
 
+## v5.7
+
+- Mybatis persistence framework 적용하기
+- 작업
+    - build.gradle에 mybatis 라이브러리 등록
+    - 'gradle eclipse' 실행
+    - 이클립스 프로젝트 리프래시
+    - DAO, Service, Servlet 변경
+    - ContextLoaderListener 변경
+
 ## v5.6
 
 - Statement를 PreparedStatement로 변경하기

@@ -19,8 +19,6 @@ import bitcamp.java110.cms.service.impl.AuthServiceImpl;
 import bitcamp.java110.cms.service.impl.ManagerServiceImpl;
 import bitcamp.java110.cms.service.impl.StudentServiceImpl;
 import bitcamp.java110.cms.service.impl.TeacherServiceImpl;
-import bitcamp.java110.cms.util.DataSource;
-import bitcamp.java110.cms.util.TransactionManager;
 
 //@WebListener
 public class ContextLoaderListener implements ServletContextListener {
@@ -47,11 +45,10 @@ public class ContextLoaderListener implements ServletContextListener {
             managerDao.setSqlSessionFactory(sqlSessionFactory);
             
             StudentMysqlDao studentDao = new StudentMysqlDao();
-            //studentDao.setDataSource(dataSource);
+            studentDao.setSqlSessionFactory(sqlSessionFactory);
             
             TeacherMysqlDao teacherDao = new TeacherMysqlDao();
-            //teacherDao.setDataSource(dataSource);
-            
+            teacherDao.setSqlSessionFactory(sqlSessionFactory);
             
             // 서비스 객체 준비하기
             ManagerServiceImpl managerService = new ManagerServiceImpl();

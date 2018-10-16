@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v5.7)
+
+- Mybatis persistence framework 적용하기
+
 ## java110-project (tag: v5.6)
 
 - Statement를 PreparedStatement로 변경하기
