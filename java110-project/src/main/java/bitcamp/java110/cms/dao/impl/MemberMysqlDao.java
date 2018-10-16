@@ -1,25 +1,21 @@
 package bitcamp.java110.cms.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import org.apache.ibatis.session.SqlSessionFactory;
 
-import bitcamp.java110.cms.dao.DaoException;
 import bitcamp.java110.cms.dao.MemberDao;
 import bitcamp.java110.cms.domain.Member;
-import bitcamp.java110.cms.util.DataSource;
 
 public class MemberMysqlDao implements MemberDao {
     
-    DataSource dataSource;
+    SqlSessionFactory sqlSessionFactory;
     
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
     }
 
     @Override
-    public int insert(Member member) throws DaoException {
+    public int insert(Member member) {
+        /*
         Connection con = null;
         PreparedStatement stmt = null;
         
@@ -50,10 +46,13 @@ public class MemberMysqlDao implements MemberDao {
             try {stmt.close();} catch (Exception e) {}
             dataSource.returnConnection(con);
         }
+        */
+        return 0;
     }
     
     @Override
-    public int delete(int no) throws DaoException {
+    public int delete(int no) {
+        /*
         Connection con = null;
         PreparedStatement stmt = null;
         
@@ -71,7 +70,10 @@ public class MemberMysqlDao implements MemberDao {
             try {stmt.close();} catch (Exception e) {}
             dataSource.returnConnection(con);
         }
+        */
+        return 0;
     }
+
 }
 
 

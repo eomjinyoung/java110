@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MemberDao 클래스가 사용할 SQL이 들어 있는 파일 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.java110.cms.dao.ManagerDao">
+
+    <resultMap type="manager" id="managerMap">
+        <id column="mno"        property="no"/>
+        <result column="name"   property="name"/>
+        <result column="email"  property="email"/>
+        <result column="tel"    property="tel"/>
+        <result column="posi"   property="position"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="managerMap" parameterType="map">
+        select
+            m.mno,
+            m.name, 
+            m.email, 
+            m.tel,
+            mr.posi 
+        from 
+            p1_mgr mr 
+            inner join p1_memb m on mr.mrno = m.mno
+        limit #{rowNo}, #{size} 
+         
+    </select>
+  
+</mapper>
+
+
+
+
+
+
+
+
+

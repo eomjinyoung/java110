@@ -1,5 +1,6 @@
 package bitcamp.java110.cms.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import bitcamp.java110.cms.dao.ManagerDao;
@@ -50,8 +51,12 @@ public class ManagerServiceImpl implements ManagerService {
     }
     
     @Override
-    public List<Manager> list() {
-        return managerDao.findAll();
+    public List<Manager> list(int pageNo, int pageSize) {
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("rowNo", (pageNo - 1) * pageSize);
+        params.put("size", pageSize);
+        
+        return managerDao.findAll(params);
     }
     
     @Override

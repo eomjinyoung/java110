@@ -1,22 +1,21 @@
 package bitcamp.java110.cms.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import org.apache.ibatis.session.SqlSessionFactory;
 
 import bitcamp.java110.cms.dao.DaoException;
 import bitcamp.java110.cms.dao.PhotoDao;
-import bitcamp.java110.cms.util.DataSource;
 
 public class PhotoMysqlDao implements PhotoDao {
     
-    DataSource dataSource;
+    SqlSessionFactory sqlSessionFactory;
     
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
     }
 
     @Override
-    public int insert(int no, String filename) throws DaoException {
+    public int insert(int no, String filename) {
+        /*
         Connection con = null;
         PreparedStatement stmt = null;
         
@@ -35,10 +34,13 @@ public class PhotoMysqlDao implements PhotoDao {
             try {stmt.close();} catch (Exception e) {}
             dataSource.returnConnection(con);
         }
+        */
+        return 0;
     }
     
     @Override
     public int delete(int no) throws DaoException {
+        /*
         Connection con = null;
         PreparedStatement stmt = null;
         
@@ -56,6 +58,9 @@ public class PhotoMysqlDao implements PhotoDao {
             try {stmt.close();} catch (Exception e) {}
             dataSource.returnConnection(con);
         }
+        */
+        return 0;
+        
     }
 }
 
