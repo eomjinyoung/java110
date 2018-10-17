@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="c1" class="ex04.Car">
+        <constructor-arg value="소나타"/>
+        <constructor-arg value="1980"/>
+    </bean>
+    
+    <bean id="c2" class="ex04.Car">
+        <constructor-arg><value>그랜저</value></constructor-arg>
+        <constructor-arg><value>3000</value></constructor-arg>
+    </bean>
+    
+    <bean id="e1" class="ex04.Engine">
+        <constructor-arg value="비트자동차"/>
+        <constructor-arg value="16"/>
+        <constructor-arg value="false"/>
+    </bean>
+    
+    <!-- 파라미터 값으로 객체를 주입하기 I 
+         => ref 속성을 통해 기존에 생성한 객체를 주입할 수 있다. 
+    -->
+    <bean id="c3" class="ex04.Car">
+        <constructor-arg value="자바110"/>
+        <constructor-arg value="3000"/>
+        <constructor-arg ref="e1"/> <!-- ref 속성에 객체 지정하기 -->
+    </bean>
+    <!-- 자바 코드:
+        Car obj = new Car("자바110", 3000, e1);
+        컨테이너.보관("c3", obj);
+    -->
+    
+    <!-- 파라미터 값으로 객체를 주입하기 II
+         => <bean> 태그를 이용하여 새 객체를 만들어 주입할 수 있다.
+    -->
+    <bean id="c4" class="ex04.Car">
+        <constructor-arg value="자바120"/>
+        <constructor-arg value="10000"/>
+        <constructor-arg>
+            <bean id="e2" class="ex04.Engine">
+		        <constructor-arg value="비트자동차"/>
+		        <constructor-arg value="32"/>
+		        <constructor-arg value="true"/>
+		    </bean>
+        </constructor-arg>
+    </bean>
+    <!-- 자바 코드:
+        Car obj = new Car(
+            "자바110", 
+            3000, 
+            new Engine("비트자동차", 32, true));
+        컨테이너.보관("c4", obj);
+    -->
+    
+</beans>
+
+
+
+
+
+
+

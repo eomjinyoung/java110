@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 기본 생성자 호출됨 -->
+    <bean id="c1" class="ex04.Car"/>
+    
+    <!-- Car(String,int) 생성자 호출 -->
+    <bean id="c2" class="ex04.Car">
+        <constructor-arg value="소나타"/>
+        <constructor-arg value="1980"/>
+    </bean>
+    
+    <!-- Car(int,String) 생성자 호출 -->
+    <bean id="c3" class="ex04.Car">
+        <constructor-arg value="1980"/>
+        <constructor-arg value="현대자동차"/>
+    </bean>
+    
+    <!-- 모델명이 숫자일 경우 원하는 생성자가 호출되지 않는 문제가 발생한다!
+         즉 "2018"을 모델명으로 하고 "3000"을 cc로 하는 
+         Car(String,int) 생성자가 호출하기를 원했지만,
+         실제는 Car(int,String) 생성자가 호출되었다.
+         컨테이너가 primitive 타입을 우선해서 생성자를 찾는 것으로 추측할 수 있다.
+     -->
+    <bean id="c4" class="ex04.Car">
+        <constructor-arg value="2018"/>
+        <constructor-arg value="3000"/>
+    </bean>
+
+    <!-- 파라미터 값으로 생성자를 구분하기가 애매할 때는
+         파라미터의 타입과 순서를 명확히 지정하면 좋다. 
+     -->
+    <bean id="c5" class="ex04.Car">
+        <constructor-arg value="2018" type="java.lang.String" index="0"/>
+        <constructor-arg value="3000" type="int" index="1"/>
+    </bean>
+</beans>
+
+
+
+
+
+
+

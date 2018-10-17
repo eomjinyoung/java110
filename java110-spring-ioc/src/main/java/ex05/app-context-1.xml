@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="c1" class="ex05.Car">
+        <property name="model" value="소나타"/>
+        <property name="cc" value="1980"/>
+        <property name="maker" value="현대자동차"/>
+    </bean>
+    <!-- 자바 코드:
+        Car obj = new Car();
+        obj.setModel("소나타");
+        obj.setCc(1980);
+        obj.setMaker("현대자동차");
+        컨테이너.보관("c1", obj);
+     -->
+    
+    <bean id="c2" class="ex05.Car">
+        <property name="model"><value>소나타</value></property>
+        <property name="cc"><value>1980</value></property>
+        <property name="maker"><value>현대자동차</value></property>
+    </bean>
+    
+    <bean id="e1" class="ex05.Engine">
+        <property name="maker" value="비트자동차"/>
+        <property name="valve" value="18"/>
+        <property name="diesel" value="true"/>
+    </bean>
+    
+    <bean id="c3" class="ex05.Car">
+        <property name="model"><value>트럭1</value></property>
+        <property name="cc"><value>10000</value></property>
+        <property name="maker"><value>비트자동차</value></property>
+        <property name="engine"><ref bean="e1"/></property>
+    </bean>
+    
+    <bean id="c4" class="ex05.Car">
+        <property name="model" value="트럭2"/>
+        <property name="cc" value="10000"/>
+        <property name="maker" value="비트자동차"/>
+        <property name="engine" ref="e1"/>
+    </bean>
+    <!-- 자바 코드:
+        Car obj = new Car();
+        obj.setModel("트럭2");
+        obj.setCc(10000);
+        obj.setMaker("비트자동차");
+        obj.setEngine(e1);
+        컨테이너.보관("c4", obj);
+     -->
+    
+    <bean id="c5" class="ex05.Car">
+        <property name="model" value="트럭3"/>
+        <property name="cc" value="10000"/>
+        <property name="maker" value="캠프자동차"/>
+        <property name="engine">
+            <bean class="ex05.Engine">
+                <property name="maker" value="캠프자동차"/>
+                <property name="valve" value="32"/>
+                <property name="diesel" value="false"/>
+            </bean>
+        </property>
+    </bean>
+    <!-- 자바 코드:
+        Car obj = new Car();
+        obj.setModel("트럭3");
+        obj.setCc(10000);
+        obj.setMaker("캠프자동차");
+        
+        Engine engine = new Engine();
+        engine.setMaker("캠프자동차");
+        engine.setValve(32);
+        engine.setDiesel(false);
+        
+        obj.setEngine(engine);
+        컨테이너.보관("c5", obj);
+     -->
+</beans>
+
+
+
+
+
+
+
