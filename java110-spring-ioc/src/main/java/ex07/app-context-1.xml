@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="c1" class="ex07.Car">
+        <property name="model" value="소나타"/>
+        <property name="cc" value="1980"/>
+        <property name="maker" value="비트자동차"/>
+        <property name="createdDate" value="2018-10-18"/>
+    </bean>
+    
+    <bean id="c2" class="ex07.Car">
+        <property name="model" value="티코"/>
+        <property name="cc" value="980"/>
+        <property name="maker" value="비트자동차"/>
+        <property name="createdDate" value="2018-10-18"/>
+        <property name="engine" value="비트공업사,16,false"/>
+    </bean>
+    
+    
+    <!-- 커스텀 에디터를 등록하는 방법:
+        => 커스텀 에디터 설정기를 생성한다.
+           이름은 지정할 필요가 없다.
+           스프링 IoC 컨테이너는 클래스 타입으로 자동으로 찾는다. 
+        => 커스텀 에디터 설정기에 개발자가 만든 에디터를 등록하라! 
+    -->
+     
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="java.sql.Date" 
+                       value="ex07.DatePropertyEditor"/>
+            </map>
+        </property>
+    </bean>
+    
+    
+    
+    
+</beans>
+
+
+
+
+
+
+
