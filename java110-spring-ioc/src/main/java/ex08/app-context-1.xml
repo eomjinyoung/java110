@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="c1" class="ex08.Car">
+        <property name="model" value="소나타"/>
+        <property name="cc" value="1980"/>
+        <property name="maker" value="비트자동차"/>
+    </bean>
+      
+    <bean id="e1" class="ex08.Engine">
+        <property name="maker" value="캠프자동차"/>
+        <property name="valve" value="32"/>
+        <property name="diesel" value="false"/>
+    </bean>
+    
+    <!-- BeanPostProcessor 객체를 등록하면,
+         스프링 IoC 컨테이너가 객체를 생성한 후 실행한다.
+    -->
+    
+    <!-- 다음 클래스는 객체를 생성한 후 @Autowired 애노테이션을 처리한다. -->
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    
+    <!-- 다음 클래스는 그냥 아무것도 안한다. 그냥 호출되는지 확인하기 위해서 만들었다. -->
+    <bean class="ex08.MyBeanPostProcessor"/>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

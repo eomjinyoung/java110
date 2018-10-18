@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="c1" class="ex08.Car">
+        <property name="model" value="소나타"/>
+        <property name="cc" value="1980"/>
+        <property name="maker" value="비트자동차"/>
+    </bean>
+      
+    <bean id="e1" class="ex08.Engine">
+        <property name="maker" value="캠프자동차"/>
+        <property name="valve" value="32"/>
+        <property name="diesel" value="false"/>
+    </bean>
+    
+    <!-- 다음 태그는 스프링 IoC 컨테이너의 기본 애노테이션들을 처리할
+         BeanPostProcessor를 자동으로 등록하는 명령어이다. 
+    -->
+    <context:annotation-config/>
+    
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

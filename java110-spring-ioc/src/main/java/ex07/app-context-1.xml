@@ -32,6 +32,8 @@
             <map>
                 <entry key="java.sql.Date" 
                        value="ex07.DatePropertyEditor"/>
+                <entry key="ex07.Engine" 
+                       value="ex07.EnginePropertyEditor"/>       
             </map>
         </property>
     </bean>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Car의 engine 프로퍼티에 설정할 Engine 객체를 먼저 선언할 필요가 없다.
+         스프링 IoC 컨테이너가 필요한 시점에 만들어 꼽는다.
+    -->
+    <bean id="c1" class="ex05.Car">
+        <property name="model" value="소나타"/>
+        <property name="cc" value="1980"/>
+        <property name="maker" value="현대자동차"/>
+        <property name="engine" ref="e1"/>
+    </bean>
+
+    <bean id="e1" class="ex05.Engine">
+        <property name="maker" value="캠프자동차"/>
+        <property name="valve" value="32"/>
+        <property name="diesel" value="false"/>
+    </bean>
+
+    <bean id="c2" class="ex05.Car">
+        <constructor-arg type="java.lang.String" value="비트자동차"/>
+        <constructor-arg type="int" value="1980"/>
+        <constructor-arg type="ex05.Engine" ref="e2"/>
+    </bean>
+    
+    <bean id="e2" class="ex05.Engine">
+        <property name="maker" value="캠프자동차"/>
+        <property name="valve" value="32"/>
+        <property name="diesel" value="false"/>
+    </bean>
+</beans>
+
+
+
+
+
+
+

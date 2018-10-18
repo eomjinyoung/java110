@@ -57,6 +57,9 @@ public class Test01 {
         Car c1 = (Car)iocContainer.getBean("c1");
         System.out.println(c1);
         
+        Car c2 = (Car)iocContainer.getBean("c2");
+        System.out.println(c2);
+        
     }
 
 }
