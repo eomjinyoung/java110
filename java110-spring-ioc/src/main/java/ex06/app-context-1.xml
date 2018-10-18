@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="e1" class="ex06.Engine">
+        <property name="maker" value="비트자동차"/>
+        <property name="valve" value="16"/>
+        <property name="diesel" value="true"/>
+    </bean>
+
+    <!-- 공장을 통해서 객체 생성하기 - 팩토리 메서드가 static 일 경우  -->
+    <bean id="e2" class="ex06.EngineFactory1" factory-method="create">
+        <!-- create() 메서드를 호출할 때 전달할 파라미터 값이다. -->
+        <constructor-arg value="HX9"/>
+    </bean>
+    
+    <!-- 공장을 통해서 객체 생성하기 - 팩토리 메서드가 인스턴스 일 경우 -->
+    <bean id="f1" class="ex06.EngineFactory2"/>
+    
+    <bean id="e3" factory-bean="f1" factory-method="create">
+        <!-- create() 메서드를 호출할 때 전달할 파라미터 값이다. -->
+        <constructor-arg value="H01"/>
+    </bean>
+    
+    <!-- 스프링 IoC 규칙에 따라 공장 클래스를 만든 경우 
+        => class 속성에 지정한 클래스가 스프링의 FactoryBean 규칙에 따라 만든 클래스라면,
+           이 클래스의 객체를 e4라는 이름으로 저장하는 것이 아니라,
+           이 클래스의 객체를 만든 후에 이 클래스에 대해 getObject()를 호출하여 
+           그 리턴 값을 e4라는 이름을 저장한다.
+        => 즉 FactoryBean을 구현한 공장 클래스인 경우
+           공장 객체를 저장하는 것이 아니라,
+           공장에서 생산한 객체를 저장한다.
+    -->
+    <bean id="e4" class="ex06.EngineFactory3">
+        <property name="model" value="B200"/>
+    </bean>
+    <!-- 자바코드:
+        EngineFactory3 factory = new EngineFactory3();
+        factory.setModel("B200");
+        
+        Class<?> objClass = factory.getObjectType();
+        ...
+        
+        Engine obj = factory.getObject();
+        
+        컨테이너.보관("e4", obj); 
+     -->
+     
+     <bean id="e5" class="ex06.EngineFactory3">
+        <property name="model" value="B200"/>
+     </bean>
+    
+     <!-- 다음과 같이 클래스 이름이 FactoryBean으로 끝난다면
+          FactoryBean 인터페이스를 구현했다는 뜻이다.
+          보통 개발자들이 관례적으로 그렇게 이름을 짓는다.
+          이런 경우 이름만 보고도 e6에 저장되는 것은 
+          EngineFactoryBean이 아니라 Engine임을 눈치채야 한다. 
+     -->
+     <bean id="e6" class="ex06.EngineFactoryBean">
+        <property name="model" value="B100"/>
+    </bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

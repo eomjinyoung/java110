@@ -12,15 +12,15 @@
     <!-- 자바 코드:
         Car obj = new Car();
         obj.setModel("소나타");
-        obj.setCc(1980);
+        obj.setCc(Integer.parseInt("1980"));
         obj.setMaker("현대자동차");
         컨테이너.보관("c1", obj);
      -->
     
     <bean id="c2" class="ex05.Car">
-        <property name="model"><value>소나타</value></property>
-        <property name="cc"><value>1980</value></property>
-        <property name="maker"><value>현대자동차</value></property>
+        <property name="model"><value type="java.lang.String">소나타</value></property>
+        <property name="cc"><value type="int">1980</value></property>
+        <property name="maker"><value type="java.lang.String">현대자동차</value></property>
     </bean>
     
     <bean id="e1" class="ex05.Engine">

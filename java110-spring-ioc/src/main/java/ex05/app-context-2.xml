@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="t1" class="ex05.Tire">
+        <property name="maker" value="비트타이어"/>
+        <property name="width" value="215"/>
+        <property name="height" value="65"/>
+    </bean>
+    
+    <bean id="t2" class="ex05.Tire">
+        <property name="maker" value="비트타이어"/>
+        <property name="width" value="215"/>
+        <property name="height" value="65"/>
+    </bean>
+    
+    <bean id="t3" class="ex05.Tire">
+        <property name="maker" value="비트타이어"/>
+        <property name="width" value="215"/>
+        <property name="height" value="65"/>
+    </bean>
+    
+    <bean id="t4" class="ex05.Tire">
+        <property name="maker" value="비트타이어"/>
+        <property name="width" value="215"/>
+        <property name="height" value="65"/>
+    </bean>
+    
+    <bean id="c1" class="ex05.Car">
+        <property name="tires">
+            <set>
+                <ref bean="t1"/>
+                <ref bean="t2"/>
+                <ref bean="t3"/>
+                <ref bean="t4"/>
+                <bean class="ex05.Tire">
+                    <property name="maker" value="비트타이어"/>
+                    <property name="width" value="140"/>
+                    <property name="height" value="65"/>
+                </bean>
+            </set>
+        </property>
+    </bean>
+    
+    
+</beans>
+
+
+
+
+
+
+

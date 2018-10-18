@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="t1" class="ex05.Tire">
+        <property name="maker" value="비트타이어"/>
+        <property name="width" value="215"/>
+        <property name="height" value="65"/>
+    </bean>
+
+    <bean id="c1" class="ex05.Car">
+        <property name="options">
+            <map>
+                <entry>
+                    <key><value>sunroof</value></key>
+                    <value>true</value>
+                </entry>
+                <entry key="aircon"><value>true</value></entry>
+                <entry key="airbag" value="true"/>
+                <entry key="auto" value="true"/>
+                <entry key="gear" value="6"/>
+                <entry key="spare" value-ref="t1"/>
+            </map>
+        </property>
+    </bean>
+    
+</beans>
+
+
+
+
+
+
+

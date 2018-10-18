@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="e1" class="ex04.Engine">
+        <property name="maker" value="비트자동차"/>
+        <property name="valve" value="16"/>
+    </bean>
+
+    <bean id="c1" class="ex04.Car"
+          c:model="2018" c:cc="1980"/>
+          
+    <bean id="c2" class="ex04.Car"
+          c:cc="1980" c:model="2018"/>
+          
+    <bean id="c3" class="ex04.Car"
+          c:maker="2018" c:cc="1980"/>
+          
+    <bean id="c4" class="ex04.Car"
+          c:model="2018" c:cc="1980" c:engine-ref="e1"/>      
+</beans>
+
+
+
+
+
+
+
