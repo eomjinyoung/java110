@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.java110.cms.domain.Student;
 import bitcamp.java110.cms.service.StudentService;
 
@@ -38,8 +40,11 @@ public class StudentListServlet extends HttpServlet {
                 pageSize = 3;
         }
         
-        StudentService studentService = (StudentService)this.getServletContext()
-                .getAttribute("studentService");
+        ApplicationContext iocContainer = 
+                (ApplicationContext)this.getServletContext()
+                                        .getAttribute("iocContainer");
+        StudentService studentService = 
+                iocContainer.getBean(StudentService.class);
         
         List<Student> list = studentService.list(pageNo, pageSize);
         request.setAttribute("list", list);

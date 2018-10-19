@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import bitcamp.java110.cms.dao.MemberDao;
 import bitcamp.java110.cms.dao.PhotoDao;
@@ -12,14 +14,11 @@ import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
 import bitcamp.java110.cms.service.StudentService;
 
+@Service
 public class StudentServiceImpl implements StudentService {
 
-    SqlSessionFactory sqlSessionFactory;
+    @Autowired SqlSessionFactory sqlSessionFactory;
     
-    public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
-        this.sqlSessionFactory = sqlSessionFactory;
-    }
-
     @Override
     public void add(Student student) {
         SqlSession session = sqlSessionFactory.openSession();

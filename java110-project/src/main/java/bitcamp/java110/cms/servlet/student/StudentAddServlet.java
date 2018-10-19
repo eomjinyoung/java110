@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.java110.cms.domain.Student;
 import bitcamp.java110.cms.service.StudentService;
 
@@ -50,8 +52,11 @@ public class StudentAddServlet extends HttpServlet {
         s.setSchool(request.getParameter("school"));
         s.setWorking(Boolean.parseBoolean(request.getParameter("working")));
         
-        StudentService studentService = (StudentService)this.getServletContext()
-                .getAttribute("studentService");
+        ApplicationContext iocContainer = 
+                (ApplicationContext)this.getServletContext()
+                                        .getAttribute("iocContainer");
+        StudentService studentService = 
+                iocContainer.getBean(StudentService.class);
         
         try {
             // 사진 데이터 처리

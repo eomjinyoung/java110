@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.java110.cms.domain.Manager;
 import bitcamp.java110.cms.service.ManagerService;
 
@@ -52,9 +54,11 @@ public class ManagerAddServlet extends HttpServlet {
         m.setTel(request.getParameter("tel"));
         m.setPosition(request.getParameter("position"));
         
+        ApplicationContext iocContainer = 
+                (ApplicationContext)this.getServletContext()
+                                        .getAttribute("iocContainer");
         ManagerService managerService = 
-                (ManagerService)this.getServletContext()
-                                    .getAttribute("managerService");
+                iocContainer.getBean(ManagerService.class);
         
         try {
             // 사진 데이터 처리

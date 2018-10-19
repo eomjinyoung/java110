@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.java110.cms.service.StudentService;
 
 @WebServlet("/student/delete")
@@ -23,8 +25,11 @@ public class StudentDeleteServlet extends HttpServlet {
         
         int no = Integer.parseInt(request.getParameter("no"));
         
-        StudentService studentService = (StudentService)this.getServletContext()
-                .getAttribute("studentService");
+        ApplicationContext iocContainer = 
+                (ApplicationContext)this.getServletContext()
+                                        .getAttribute("iocContainer");
+        StudentService studentService = 
+                iocContainer.getBean(StudentService.class);
         
         try {
             studentService.delete(no);

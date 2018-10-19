@@ -1,5 +1,13 @@
 # java110-project
 
+## v5.9
+
+- Spring IoC 컨테이너 적용
+- 작업
+    - Spring IoC 컨테이너 라이브러리 추가
+    - ContextLoaderListener 변경
+    - Service와 DAO를 Spring IoC 컨테이너에서 관리하도록 변경
+
 ## v5.8
 
 - Mybatis에서 자동으로 생성해주는 Mapper(DAO) 객체 사용하기
