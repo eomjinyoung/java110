@@ -36,7 +36,7 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-jdbc', version: '5.1.1.RELEASE'
 
     // Apache Common DBCP 라이브러리
-    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.5.0'
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
     
     compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
     compile 'com.google.guava:guava:23.0'
