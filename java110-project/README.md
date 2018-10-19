@@ -1,5 +1,27 @@
 # java110-project
 
+## v6.0
+
+- Mybatis와 Spring IoC 컨테이너 연동
+- 작업
+    - mybatis-spring 연동 라이브러리 가져오기
+        - mvnrepository.com에서 'mybatis-spring' 검색
+        - build.gradle 에 라이브러리 정보 등록
+        - 'gradle eclipse' 실행
+        - 이클립스 프로젝트 리프래시
+    - mybatis-spring 문서 참고하여 스프링 설정하기
+        - mybatis.org 사이트 => github.com => spring 저장소 => 문서
+        - 즐겨 찾기에 등록
+    - jdbc.properties 파일 로딩
+        - @PropertySource 애노테이션 사용
+    - DataSource 객체 준비
+        - apache common-dbcp 라이브러리 추가
+        - DataSource 객체 생성 메서드 추가
+    - SqlSessionFactory 객체 생성
+        - XML 기반 mybatis 설정을 스프링 Java Config로 대체한다.
+        - mybatis-spring 라이브러리에서 제공하는 SqlSessionFactoryBean 을 사용한다.
+        - 의존 라이브러리 spring-jdbc를 추가해야 한다.
+        
 ## v5.9
 
 - Spring IoC 컨테이너 적용
