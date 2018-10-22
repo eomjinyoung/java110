@@ -9,17 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bitcamp.java110.cms.domain.Member;
+import bitcamp.java110.cms.mvc.RequestMapping;
 import bitcamp.java110.cms.service.AuthService;
-import bitcamp.java110.cms.web.PageController;
 
-@Component("/auth/login")
-public class LoginController implements PageController {
+@Component
+public class LoginController {
 
     @Autowired
     AuthService authService;
     
-    @Override
-    public String service(
+    @RequestMapping("/auth/login")
+    public String login(
             HttpServletRequest request, 
             HttpServletResponse response) {
         

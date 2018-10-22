@@ -6,17 +6,17 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import bitcamp.java110.cms.mvc.RequestMapping;
 import bitcamp.java110.cms.service.StudentService;
-import bitcamp.java110.cms.web.PageController;
 
-@Component("/student/delete")
-public class StudentDeleteController implements PageController { 
+@Component
+public class StudentDeleteController { 
     
     @Autowired
     StudentService studentService;
     
-    @Override
-    public String service(
+    @RequestMapping("/student/delete")
+    public String delete(
             HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
 

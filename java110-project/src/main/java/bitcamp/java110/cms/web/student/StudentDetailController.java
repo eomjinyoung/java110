@@ -7,17 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bitcamp.java110.cms.domain.Student;
+import bitcamp.java110.cms.mvc.RequestMapping;
 import bitcamp.java110.cms.service.StudentService;
-import bitcamp.java110.cms.web.PageController;
 
-@Component("/student/detail")
-public class StudentDetailController implements PageController { 
+@Component
+public class StudentDetailController { 
     
     @Autowired
     StudentService studentService;
     
-    @Override
-    public String service(
+    @RequestMapping("/student/detail")
+    public String detail(
             HttpServletRequest request, 
             HttpServletResponse response) {
 

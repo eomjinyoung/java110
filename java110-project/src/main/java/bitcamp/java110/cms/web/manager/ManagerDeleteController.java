@@ -6,17 +6,17 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import bitcamp.java110.cms.mvc.RequestMapping;
 import bitcamp.java110.cms.service.ManagerService;
-import bitcamp.java110.cms.web.PageController;
 
-@Component("/manager/delete")
-public class ManagerDeleteController implements PageController { 
+@Component
+public class ManagerDeleteController { 
     
     @Autowired
     ManagerService managerService;
     
-    @Override
-    public String service(
+    @RequestMapping("/manager/delete")
+    public String delete(
             HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
         
