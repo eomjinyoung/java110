@@ -46,9 +46,19 @@
         <jsp-file>/error.jsp</jsp-file>
     </servlet>
     
+    <servlet>
+        <servlet-name>app</servlet-name>
+        <servlet-class>bitcamp.java110.cms.servlet.DispatcherServlet</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>app</servlet-name>
+        <url-pattern>/app/*</url-pattern>
     </servlet-mapping>
     
     

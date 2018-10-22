@@ -12,7 +12,7 @@
 Member loginUser = (Member)session.getAttribute("loginUser");
 if (loginUser == null) {
 %>
-        <li><a href='/auth/login'>로그인</a></li>
+        <li><a href='/app/auth/login'>로그인</a></li>
 <%
 } else {
     String loginType = "학생";
@@ -22,12 +22,21 @@ if (loginUser == null) {
         loginType = "강사";
     }
 %>
-        <li>[<%=loginType%>]<%=loginUser.getName()%>(<a href='/auth/logout'>로그아웃</a>)</li> 
+        <li>[<%=loginType%>]<%=loginUser.getName()%>(<a href='/app/auth/logout'>로그아웃</a>)</li> 
 <%
 }
 %>    
-        <li><a href='/student/list'>학생관리</a></li>
-        <li><a href='/teacher/list'>강사관리</a></li>
-        <li><a href='/manager/list'>매니저관리</a></li>
+        <li><a href='/app/student/list'>학생관리</a></li>
+        <li><a href='/app/teacher/list'>강사관리</a></li>
+        <li><a href='/app/manager/list'>매니저관리</a></li>
     </ul>
 </header>
+
+
+
+
+
+
+
+
+

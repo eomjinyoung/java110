@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v6.1)
+
+- Front Controller 도입
+
 ## java110-project (tag: v6.0)
 
 - Mybatis와 Spring IoC 컨테이너 연동
