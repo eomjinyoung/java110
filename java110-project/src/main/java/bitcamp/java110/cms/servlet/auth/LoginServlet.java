@@ -1,8 +1,8 @@
 package bitcamp.java110.cms.servlet.auth;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -26,12 +26,7 @@ public class LoginServlet extends HttpServlet {
             HttpServletResponse response) 
                     throws ServletException, IOException {
         
-        response.setContentType("text/html;charset=UTF-8");
-        
-        // form.jsp 인클루딩
-        RequestDispatcher rd = request.getRequestDispatcher(
-                "/auth/form.jsp");
-        rd.include(request, response);
+        request.setAttribute("viewUrl", "/auth/form.jsp");
     }
     
     @Override
@@ -45,15 +40,17 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String save = request.getParameter("save");
         
+        ArrayList<Cookie> cookies = new ArrayList<>();
         
         if (save != null) {// 이메일 저장하기를 체크했다면,
             Cookie cookie = new Cookie("email", email);
             cookie.setMaxAge(60 * 60 * 24 * 15);
-            response.addCookie(cookie);
+            cookies.add(cookie);
+            
         } else {// 이메일을 저장하고 싶지 않다면,
             Cookie cookie = new Cookie("email", "");
             cookie.setMaxAge(0);
-            response.addCookie(cookie);
+            cookies.add(cookie);
         }
         
         ApplicationContext iocContainer = 
@@ -67,25 +64,29 @@ public class LoginServlet extends HttpServlet {
         if (loginUser != null) {
             // 회원 정보를 세션에 보관한다.
             session.setAttribute("loginUser", loginUser);
+            String redirectUrl = null;
             
             switch (type) {
             case "student":
-                response.sendRedirect("../student/list");
+                redirectUrl = "../student/list";
                 break;
             case "teacher":
-                response.sendRedirect("../teacher/list");
+                redirectUrl = "../teacher/list";
                 break; 
             case "manager":
-                response.sendRedirect("../manager/list");
+                redirectUrl = "../manager/list";
                 break; 
             }
+            request.setAttribute("viewUrl", "redirect:" + redirectUrl);
+            
         } else {
             // 로그인 된 상태에서 다른 사용자로 로그인을 시도하다가 
             // 실패한다면 무조건 세션을 무효화시킨다.
             session.invalidate();
-
-            response.sendRedirect("login");
+            request.setAttribute("viewUrl", "redirect:login");
         }
+        
+        request.setAttribute("cookies", cookies);
     }
 }
 

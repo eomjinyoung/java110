@@ -49,6 +49,9 @@
     <servlet>
         <servlet-name>app</servlet-name>
         <servlet-class>bitcamp.java110.cms.servlet.DispatcherServlet</servlet-class>
+        <multipart-config>
+            <max-file-size>2000000</max-file-size>
+        </multipart-config>
     </servlet>
     
     <servlet-mapping>
