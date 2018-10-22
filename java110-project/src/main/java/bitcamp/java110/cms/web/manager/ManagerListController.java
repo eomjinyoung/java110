@@ -39,7 +39,6 @@ public class ManagerListController implements PageController {
         }
         
         List<Manager> list = managerService.list(pageNo, pageSize);
-        
         request.setAttribute("list", list);
         return "/manager/list.jsp";
     }
