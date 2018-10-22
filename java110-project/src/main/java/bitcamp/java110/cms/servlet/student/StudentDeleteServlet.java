@@ -33,14 +33,13 @@ public class StudentDeleteServlet extends HttpServlet {
         
         try {
             studentService.delete(no);
-            response.sendRedirect("list");
+            request.setAttribute("viewUrl", "redirect:list");
             
         } catch (Exception e) {
             request.setAttribute("error", e);
             request.setAttribute("message", "학생 삭제 오류!");
             request.setAttribute("refresh", "3;url=list");
-            
-            request.getRequestDispatcher("/error").forward(request, response);
+            request.setAttribute("viewUrl", "/error.jsp");
         }
         
     }
