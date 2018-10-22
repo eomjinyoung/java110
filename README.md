@@ -2,6 +2,10 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v6.4)
+
+- CRUD 기능을 합쳐 한 개의 페이지 컨트롤러로 만들기
+
 ## java110-project (tag: v6.3)
 
 - PageController 인터페이스 대신 애노테이션을 사용하여 호출 규칙을 정의
