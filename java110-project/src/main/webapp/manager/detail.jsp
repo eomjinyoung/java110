@@ -22,7 +22,7 @@ table, th, td {
 
 <jsp:include page="../header.jsp"></jsp:include>
 
-<h1>매니저 상세정보(MVC)</h1>
+<h1>매니저 상세정보</h1>
 
 <table>
 <tbody>
