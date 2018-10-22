@@ -1,11 +1,20 @@
 # java110-project
 
+## v6.2
+
+- Page Controller를 POJO로 전환
+    - Spring IoC 컨테이너에서 관리할 수 있다.
+    - DispatcherServlet 클래스 변경
+- 작업
+    - 페이지 컨트롤러 역할을 수행하는 서블릿을 일반 클래스로 전환한다.
+
 ## v6.1
 
 - Front Controller 도입
     - Facade 디자인 패턴 적용
 - 작업
     - 컨트롤러들의 공통 기능을 분리하여 DispatcherServlet에서 처리한다.
+    - 이전 서블릿에서 했던 redirect, include를 프론트 컨트롤러에게 넘긴다.
 
 ## v6.0
 
