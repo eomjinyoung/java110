@@ -1,5 +1,14 @@
 # java110-project
 
+## java110-project (tag: v6.6)
+
+- 요청 처리 메서드에서 클라이언트가 보낸 값 바로 받기
+    - @RequestParam 애노테이션으로 클라이언트가 보낸 값 바로 받기
+- 작업
+    - @RequestParam 애노테이션 정의
+    - 프론트 컨트롤러(DispatcherServlet) 변경한다.
+    - 각 페이지 컨트롤로의 메서드도 변경한다.
+
 ## v6.5
 
 - 요청 처리 메서드의 파라미터 값 처리를 자동화하기
