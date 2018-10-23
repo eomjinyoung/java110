@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="ex01"/>
+    
+    <!-- Spring WebMVC에서 제공하는 애노테이션을 사용한다면
+         그 애노테이션을 처리할 객체를 등록해야 한다.
+         예를 들어 @Autowired를 쓰기 위해 AutowiredAnnotationBeanPostProcessor 클래스를 
+         등록한 것 처럼 객체를 등록해야 한다. 
+         그런 Spring WebMVC는 개발자가 클래스의 이름을 일일이 암기하지 않아도 되도록 
+         다음 태그를 제공한다. 
+         다음 태그만 선언한다면 MVC와 관련된 객체들이 등록될 것이다.
+    -->
+    <mvc:annotation-driven/>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
