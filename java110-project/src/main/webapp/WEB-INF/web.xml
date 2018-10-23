@@ -41,11 +41,24 @@
         <listener-class>bitcamp.java110.cms.listener.ContextLoaderListener</listener-class>
     </listener>
     
-    <servlet>
-        <servlet-name>error</servlet-name>
-        <jsp-file>/error.jsp</jsp-file>
-    </servlet>
     
+    <!-- 필터 배치하기 -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>bitcamp.java110.cms.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/app/*</url-pattern>
+    </filter-mapping>    
+    
+    
+    <!-- 프론트 컨트롤러 서블릿 배치하기 -->
     <servlet>
         <servlet-name>app</servlet-name>
         <servlet-class>bitcamp.java110.cms.servlet.DispatcherServlet</servlet-class>
@@ -53,11 +66,6 @@
             <max-file-size>2000000</max-file-size>
         </multipart-config>
     </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>error</servlet-name>
-        <url-pattern>/error</url-pattern>
-    </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>app</servlet-name>
