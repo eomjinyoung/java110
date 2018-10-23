@@ -6,14 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import bitcamp.java110.cms.domain.Member;
-import bitcamp.java110.cms.mvc.RequestMapping;
-import bitcamp.java110.cms.mvc.RequestParam;
 import bitcamp.java110.cms.service.AuthService;
 
-@Component
+@Controller
 public class AuthController {
 
     @Autowired
@@ -21,10 +20,10 @@ public class AuthController {
     
     @RequestMapping("/auth/login")
     public String login(
-            @RequestParam("type") String type,
-            @RequestParam("email") String email,
-            @RequestParam("password") String password,
-            @RequestParam("save") String save,
+            String type,
+            String email,
+            String password,
+            String save,
             HttpServletRequest request, 
             HttpServletResponse response,
             HttpSession session) {

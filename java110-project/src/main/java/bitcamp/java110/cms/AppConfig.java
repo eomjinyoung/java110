@@ -1,6 +1,5 @@
 package bitcamp.java110.cms;
 
-import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
@@ -16,15 +15,15 @@ import org.springframework.core.env.Environment;
 
 @ComponentScan(basePackages="bitcamp.java110.cms")
 @PropertySource("classpath:/bitcamp/java110/cms/conf/jdbc.properties")
-
-// Mybatis에서 자동으로 DAO를 생성할 때 사용할 인터페이스가 들어 있는 패키지 설정 
 @MapperScan("bitcamp.java110.cms.dao")
 public class AppConfig {
     
-    public static ServletContext sc;
-    
     @Autowired
     Environment env;
+    
+    public AppConfig() {
+        System.out.println("AppConfig() 호출됨!");
+    }
     
     @Bean(destroyMethod="close")
     public DataSource dataSource() {
@@ -67,11 +66,6 @@ public class AppConfig {
         }
     }
     
-    @Bean
-    public ServletContext servletContext() {
-        return sc;
-    }
-
 /*
     public static void main(String[] args) {
         

@@ -19,8 +19,12 @@ dependencies {
     // JSTL 구현 라이브러리
     compile group: 'javax.servlet', name: 'jstl', version: '1.2'
     
-    // Spring IoC 컨테이너 관련 라이브러리 
-    compile group: 'org.springframework', name: 'spring-context', version: '5.1.1.RELEASE'
+    // Spring WebMVC 라이브러리
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.1.1.RELEASE'
+    
+    // Spring IoC 컨테이너 관련 라이브러리
+    // => Spring WebMVC를 추가하면 context 라이브러리는 자동으로 추가된다. 
+    //compile group: 'org.springframework', name: 'spring-context', version: '5.1.1.RELEASE'
     
     
     // mariadb jdbc driver 
