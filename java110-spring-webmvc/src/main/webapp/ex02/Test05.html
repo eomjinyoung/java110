@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Test05 페이지 컨트롤러 테스트하기</h1>
+<button id="btn1">요청 : name 헤더 추가</button><br>
+<button id="btn2">요청 : age 헤더 추가</button><br>
+<button id="btn3">요청 : name과 age 헤더 추가</button><br>
+<button id="btn4">요청</button><br>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+$("#btn1").click(() => {
+    jQuery.ajax("http://localhost:8888/app/ex02/test05", {
+        method: 'GET',
+        headers: {
+            name: encodeURIComponent("홍길동")
+        },
+        success: (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+$("#btn2").click(() => {
+    jQuery.ajax("http://localhost:8888/app/ex02/test05", {
+        method: 'GET',
+        headers: {
+            age: 20
+        },
+        success: (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+$("#btn3").click(() => {
+    jQuery.ajax("http://localhost:8888/app/ex02/test05", {
+        method: 'GET',
+        headers: {
+            age: 20,
+            name: encodeURIComponent("홍길동")
+        },
+        success: (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+$("#btn4").click(() => {
+    jQuery.ajax("http://localhost:8888/app/ex02/test05", {
+        method: 'GET',
+        success: (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
