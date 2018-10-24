@@ -24,6 +24,22 @@ public class Test14 {
         return "/ex02/Test14.jsp";
     }
     
+    
+    // 도메인 객체와 낱개 데이터 모두 받기
+    // => 클라이언트 보낸 데이터가 도메인 객체의 프로퍼티명과도 일치하고,
+    //    낱개로 받는 변수명과도 일치한다면,
+    //    프론트 컨트롤러는 둘 다 넣어준다.
+    @RequestMapping("m2")
+    public String m2(
+            Car car,
+            String maker, 
+            Model model) {
+        
+        System.out.println(maker);
+        model.addAttribute("car", car);
+        return "/ex02/Test14.jsp";
+    }
+    
 }
 
 
