@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="ex03"/>
+    <context:component-scan base-package="ex02"/>
     
     <!-- Spring WebMVC에서 제공하는 애노테이션을 사용한다면
          그 애노테이션을 처리할 객체를 등록해야 한다.
@@ -22,41 +22,13 @@
     -->
     <mvc:annotation-driven/>
 
-    <!-- Servlet 3.0에서 제공하는 multipart/form-data 처리기를 사용하지 않고
-         (서블릿 컨테이너가 multipart/form-data를 처리하는 것이 아니라)
-         Spring WebMVC 프레임워크에서 직접 처리하고 싶다면,  
-         다음 객체를 등록하라!
-    -->
-    <!--  
+    <!-- multipart/form-data 를 처리하는 객체 등록 -->
     <bean id="multipartResolver" 
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
         <property name="maxUploadSize" value="2000000" /> 
     </bean>
-    -->
+
     
-    <!-- 기존의 ViewResolver를 교체하기 -->
-    <!--      
-    <bean id="viewResolver" 
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-	    <property name="prefix" value="/WEB-INF/jsp/"/>
-	    <property name="suffix" value=".jsp"/>
-	</bean>
-	-->
-	
-	<!-- 예전에는 JSON 데이터를 처리하기 위해 다음의 객체를 등록하였다.
-	     현재 버전(5.1.1)은 따로 등록하지 않아도 된다.
-	-->
-	<!--  
-	<mvc:view-resolvers>
-	    <mvc:content-negotiation>
-	        <mvc:default-views>
-	            <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
-	        </mvc:default-views>
-	    </mvc:content-negotiation>
-	    <mvc:jsp/>
-	</mvc:view-resolvers>
-    -->
 </beans>
 
 
