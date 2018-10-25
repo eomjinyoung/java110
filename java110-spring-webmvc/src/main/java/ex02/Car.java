@@ -1,8 +1,10 @@
 package ex02;
 
 import java.sql.Date;
+import java.util.Arrays;
 
 public class Car {
+    int no;
     String model;
     String maker;
     boolean auto;
@@ -11,6 +13,19 @@ public class Car {
     Tire[] tires;
     Engine engine;
     
+    
+    @Override
+    public String toString() {
+        return "Car [no=" + no + ", model=" + model + ", maker=" + maker + ", auto=" + auto + ", createdDate="
+                + createdDate + ", musics=" + Arrays.toString(musics) + ", tires=" + Arrays.toString(tires)
+                + ", engine=" + engine + "]";
+    }
+    public int getNo() {
+        return no;
+    }
+    public void setNo(int no) {
+        this.no = no;
+    }
     public String getModel() {
         return model;
     }

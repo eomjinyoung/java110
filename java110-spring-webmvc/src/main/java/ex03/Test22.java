@@ -2,10 +2,10 @@
 package ex03;
 
 import java.sql.Date;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ex02.Car;
@@ -46,10 +46,6 @@ public class Test22 {
     // => 따라서 @RestController를 사용하려면 위의 두 개의 라이브러리 중 하나는 
     //    반드시 포함해야 한다.
     
-    
-    // 테스트:
-    //      http://localhost:8888/ex02/Test22.html
-    // 
     
     // 출력하는 데이터가 application/json이라고 프론트 컨트롤러에게 알려주면,
     // 프론트 컨트롤러는 리턴 객체를 Json 변환기를 이용하여 변환한 후 
@@ -129,20 +125,52 @@ public class Test22 {
     }
     
     
-    // 클라이언트가 보낸 JSON 데이터를 변수에 받아서 페이지 컨트롤러가 처리하기
-    // => 문자열을 자바 객체로 변환시켜줄 라이브러리를 추가해야 한다.
-    //    google의 gson 라이브러리를 사용해 보자!
+    // 테스트:
+    //      http://localhost:8888/ex02/Test22.html
     // 
-    @RequestMapping(value="mx", produces="text/plain;charset=UTF-8")
-    @ResponseBody
-    public String mx(@RequestBody String jsonData) throws Exception {
-        
-        return "ex02.Test21.m1()";
+    
+    // 클라이언트가 보낸 JSON 데이터를 String 변수에 받기
+    // => JSON 문자열 ---> String
+    @RequestMapping("m6")
+    public String m6(@RequestBody String jsonData) throws Exception {
+        System.out.println(jsonData);
+        return "ex03.Test22.m6()";
     }
     
     
+    // => JSON 문자열 ---> Car 객체
+    @RequestMapping("m7")
+    public String m7(@RequestBody Car car) throws Exception {
+        System.out.println(car);
+        return "ex03.Test22.m7()";
+    }
     
+    // @RequestBody를 생략하면 안된다!
+    // => 생략하면, 
+    //    클라이언트가 보낸 데이터가 application/x-www-form-urlencoded 형식이라고 
+    //    간주한다.
+    //    즉 변수=값&변수=값&... 형태의 데이터로 간주하고 Car 객체에 값을 넣으려고 할 것이다.
+    //    그러나 클라이언트는 JSON 형식으로 데이터를 보내기 때문에 
+    //    Car 객체에는 제대로 값이 들어가지 않는다.
+    // 
+    @RequestMapping("m8")
+    public String m8(Car car) throws Exception {
+        System.out.println(car);
+        return "ex03.Test22.m8()";
+    }
     
+    // 클라이언트가 보낸 JSON 데이터를 Map 객체에 담을 수도 있다.
+    // 단, Map 변수를 그냥 선언하면 기존의 규칙대로 
+    // 프론트 컨트롤러는 페이지 컨트롤러가 작업한 결과를 담는 용도로 사용하는 줄 알고
+    // 빈 맵 객체를 넘겨줄 것이다.
+    // Map 변수에 JSON 데이터를 받고 싶다면, 변수 앞에 @RequestBody를 명시해야 한다.
+    // 이 경우 생략하면 안된다.
+    // 
+    @RequestMapping("m9")
+    public String m9(@RequestBody Map data) throws Exception {
+        System.out.println(data);
+        return "ex03.Test22.m9()";
+    }
     
 }
 

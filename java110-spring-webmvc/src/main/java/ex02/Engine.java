@@ -5,6 +5,11 @@ public class Engine {
     int cc;
     int valve;
 
+    @Override
+    public String toString() {
+        return "Engine [name=" + name + ", cc=" + cc + ", valve=" + valve + "]";
+    }
+
     public Engine() {}
     
     public Engine(String name, int cc, int valve) {

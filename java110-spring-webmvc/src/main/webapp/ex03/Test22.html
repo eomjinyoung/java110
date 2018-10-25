@@ -7,18 +7,26 @@
 <body>
 <h1>Test22 페이지 컨트롤러 테스트하기</h1>
 <button id="btn1">JSON 데이터 보내기</button><br>
-<a href="/app/ex02/test22/m2">JSON 데이터 받기</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 
+
 $("#btn1").click(() => {
-    jQuery.ajax("http://localhost:8888/app/ex02/test22/m1", {
+    jQuery.ajax("http://localhost:8888/app/ex03/test22/m8", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        data: '{"model":"소나타","maker":"현대자동차","auto":true}',
+        data: `{
+            "model":"소나타",
+            "maker":"현대자동차",
+            "auto":true,
+            "engine": {
+                "name": "비트엔진",
+                "cc": 3000,
+                "valve": 16
+            }}`,
         success: (result) => {
             alert(result);
         },

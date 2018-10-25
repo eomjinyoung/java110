@@ -34,15 +34,16 @@
     </bean>
     -->
     
-    <!-- 기존의 ViewResolver를 교체하기 -->
-    <!--      
+    <!-- 기존의 ViewResolver를 교체하기 
+         이 ViewResolver는 request handler가 리턴한 경로의 
+         앞, 뒤에 공통 경로를 추가하여 JSP 파일을 찾아 실행한다.
+    -->
     <bean id="viewResolver" 
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 	    <property name="prefix" value="/WEB-INF/jsp/"/>
 	    <property name="suffix" value=".jsp"/>
 	</bean>
-	-->
 	
 	<!-- 예전에는 JSON 데이터를 처리하기 위해 다음의 객체를 등록하였다.
 	     현재 버전(5.1.1)은 따로 등록하지 않아도 된다.
