@@ -22,6 +22,13 @@
     -->
     <mvc:annotation-driven/>
 
+    <!-- multipart/form-data 를 처리하는 객체 등록 -->
+    <bean id="multipartResolver" 
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+        <property name="maxUploadSize" value="2000000" /> 
+    </bean>
+
+    
 </beans>
 
 

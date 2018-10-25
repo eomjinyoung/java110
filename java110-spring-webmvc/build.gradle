@@ -20,6 +20,11 @@ dependencies {
     // Spring WebMVC 라이브러리
     compile group: 'org.springframework', name: 'spring-webmvc', version: '5.1.1.RELEASE'
 
+    // multipart/form-data 를 처리할 Apache commons-fileupload 라이브러리
+    // => 이 라이브러리는 Servlet 3.0에서 제공하는 멀티파트 처리 기능을 사용하지 않고
+    //    스프링에서 자체적으로 처리하고자 할 때 필요하다.
+    compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.3'
+
     compile 'com.google.guava:guava:23.0'
     testCompile 'junit:junit:4.12'
 }
@@ -27,3 +32,12 @@ dependencies {
 repositories {
     mavenCentral() //https://repo.maven.apache.org/maven2/
 }
+
+
+
+
+
+
+
+
+
