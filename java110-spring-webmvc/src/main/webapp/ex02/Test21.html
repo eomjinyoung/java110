@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Test21 페이지 컨트롤러 테스트하기</h1>
+<button id="btn1">JSON 데이터 보내기</button><br>
+<button id="btn2">JSON 데이터 받기</button><br>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+$("#btn1").click(() => {
+    jQuery.ajax("http://localhost:8888/app/ex02/test21/m1", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: '{"model":"소나타","maker":"현대자동차","auto":true}',
+        success: (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+$("#btn2").click(() => {
+    jQuery.ajax("http://localhost:8888/app/ex02/test21/m2", {
+        method: 'GET',
+        success: (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

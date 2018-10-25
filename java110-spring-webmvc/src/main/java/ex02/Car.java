@@ -7,6 +7,8 @@ public class Car {
     String maker;
     boolean auto;
     Date createdDate;
+    String[] musics;
+    Tire[] tires;
     Engine engine;
     
     public String getModel() {
@@ -38,6 +40,18 @@ public class Car {
     }
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+    public String[] getMusics() {
+        return musics;
+    }
+    public void setMusics(String[] musics) {
+        this.musics = musics;
+    }
+    public Tire[] getTires() {
+        return tires;
+    }
+    public void setTires(Tire[] tires) {
+        this.tires = tires;
     }
     
     
