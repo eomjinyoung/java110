@@ -93,6 +93,36 @@ public class Test25 {
                 cmodel, cyear, tmodel, tyear);
     }
     
+    // PathVariable 에 정규표현식 지정하기
+    //      
+    //      {변수명:정규표현식}
+    //  
+    // 테스트:
+    //      .../search5/{l1:[0-9][0-9]}  <== 숫자 2자리
+    //                  {l2:[0-9][0-9]} 
+    //                  {l3:[0-9][0-9]} 
+    //                  {l4:[0-9][0-9]} 
+    //                  {no:[0-9]+}_{yr:[0-9]+}v{ver:[a-z0-9]+}
+    // 
+    @RequestMapping(value="search5/{l1:[0-9][0-9]}" + 
+                            "{l2:[0-9][0-9]}" + 
+                            "{l3:[0-9][0-9]}" + 
+                            "{l4:[0-9][0-9]}" + 
+                            "{no:[0-9][0-9]}_{yr:[0-9]*}v{ver:[a-z0-9]+}",
+            produces="text/plain;charset=UTF-8")
+    public String m5(
+            @PathVariable String l1,
+            @PathVariable String l2,
+            @PathVariable String l3,
+            @PathVariable String l4,
+            @PathVariable String no,
+            @PathVariable String yr,
+            @PathVariable String ver) throws Exception {
+        
+        return String.format("%s,%s,%s,%s,%s,%s,%s\n", 
+                l1, l2, l3, l4, no, yr, ver);
+    }
+    
     
 }
 
