@@ -62,6 +62,29 @@
 	    <mvc:jsp/>
 	</mvc:view-resolvers>
     -->
+    
+    
+    <!-- 인터셉터 설정하기 -->
+    <mvc:interceptors>
+        
+        <!-- 이 프론트 컨트롤러가 취급하는 모든 요청(/app/*)에 대해 인터셉터 적용하기 -->
+        <bean class="ex03.Interceptor1"/>
+        
+        <!-- 특정 URL을 요청했을 때 인터셉터 적용하기 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/ex03/test29/ok/*"/>
+            <bean class="ex03.Interceptor2"/>
+        </mvc:interceptor>
+        
+        <!-- 특정 URL을 제외하기 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/ex03/test29/**"/>
+            <mvc:exclude-mapping path="/ex03/test29/ok/*"/>
+            <bean class="ex03.Interceptor3"/>
+        </mvc:interceptor>
+        
+    </mvc:interceptors>
+    
 </beans>
 
 
