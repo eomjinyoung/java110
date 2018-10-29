@@ -1,4 +1,4 @@
-// 메서드 호출 앞 또는 뒤에 코드 붙이기 : 직접 코드 삽입 
+// 메서드 호출 앞 또는 뒤에 코드 붙이기 : 직접 코드 삽입이 가능한 경우 
 // 
 package ex11.step1;
 
@@ -28,8 +28,8 @@ public class Test01 {
         System.out.println("------------------------------");
         
         
-        // 만약 X 클래스의 m() 메서드 호출 앞/뒤로 뭔가 다른 일을 수행하고 싶다면?
-        // => test() 메서드에 해당 코드를 직접 삽입해야 한다.
+        // 만약 Service 클래스의 add() 메서드 호출 앞/뒤로 뭔가 다른 일을 수행하고 싶다면?
+        // => add() 메서드에 해당 코드를 직접 삽입해야 한다.
         
         Service caller = (Service)iocContainer.getBean(Service.class);
         caller.add();
