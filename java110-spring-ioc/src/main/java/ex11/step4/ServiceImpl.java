@@ -1,4 +1,4 @@
-package ex11.step3;
+package ex11.step4;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

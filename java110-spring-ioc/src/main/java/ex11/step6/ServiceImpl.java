@@ -1,4 +1,4 @@
-package ex11.step3;
+package ex11.step6;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,9 +36,14 @@ public class ServiceImpl implements Service {
     }
 
     @Override
-    public void addPhoto() {
-        System.out.println("addPhoto()");
+    public int addPhoto(String filename) {
+        System.out.println("addPhoto(): " + filename);
         
+        if (filename == null) {
+            throw new RuntimeException("파일이 없습니다!");
+        }
+        
+        return 1;
     }
     
     

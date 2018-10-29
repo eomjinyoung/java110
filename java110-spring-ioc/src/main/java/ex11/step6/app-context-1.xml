@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+
+    <context:component-scan base-package="ex11.step6"/>
+
+    <!-- AOP 필터 객체 생성 -->
+    <bean id="myAdvice" class="ex11.step6.MyAdvice"/>
+    
+    <!-- AOP 적용 -->
+    <aop:config>
+    
+        <!-- 어느 pointcut에 어떤 advice를 삽입해야 하는지 설정한다. -->
+        <aop:aspect id="aspect1" ref="myAdvice">
+            
+            <!-- 메서드를 호출할 때 파라미터나 리턴 값, 예외 정보를 넘기려면 
+                 다음과 같이 설정해야 한다.  
+                 args에 지정하는 값은 advice 메서드의 파라미터 이름과 같아야 한다.-->
+            <aop:before method="before" 
+                pointcut="execution(* ex11.step6.ServiceImpl.addPhoto(..)) and args(f)"/>
+            
+            <!-- 원래 메서드의 리턴 값을 받을 변수명은 returning 속성에 설정한다. 
+                 advice의 메서드 파라미터 명과 같아야 한다. -->
+            <aop:after-returning method="afterReturning"
+                pointcut="execution(* ex11.step6.ServiceImpl.addPhoto(..))"
+                returning="rt"/>
+              
+            <!-- 원래 메서드를 호출하는 중에 예외가 발생했을 때 
+                 그 예외 객체를 받으려면 다음과 같이 throwing 속성을 설정해야 한다.
+                 즉 advice 메서드의 파라미 명과 같아야 한다. -->
+            <aop:after-throwing method="afterThrowing"
+                pointcut="execution(* ex11.step6.ServiceImpl.addPhoto(..))"
+                throwing="err"/>
+            
+        </aop:aspect>
+    </aop:config>
+    
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

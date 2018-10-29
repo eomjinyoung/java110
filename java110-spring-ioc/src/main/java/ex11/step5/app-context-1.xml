@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+
+    <context:component-scan base-package="ex11.step5"/>
+
+    <!-- AOP 필터 객체 생성 -->
+    <bean id="myAdvice" class="ex11.step5.MyAdvice"/>
+    
+    <!-- AOP 적용 -->
+    <aop:config>
+    
+        <!-- 어느 pointcut에 어떤 advice를 삽입해야 하는지 설정한다. -->
+        <aop:aspect id="aspect1" ref="myAdvice">
+            
+            <!-- 필터를 끼워 넣을 메서드의 위치 정보를 설정한다. -->
+            <aop:pointcut 
+              expression="execution(* ex11.step5.ServiceImpl.*(..))" 
+              id="pointcut1"/>
+            
+            <!-- 메서드가 호출될 때 어느 지점(앞/뒤/값을 리턴한 뒤)에 넣을 것인지 설정  -->
+            <aop:before method="before" pointcut-ref="pointcut1"/>
+            <aop:after method="after" pointcut-ref="pointcut1"/>
+            <aop:after-returning method="afterReturning" pointcut-ref="pointcut1"/>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="pointcut1"/>
+        </aop:aspect>
+    </aop:config>
+    
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

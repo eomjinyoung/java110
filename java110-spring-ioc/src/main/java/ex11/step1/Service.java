@@ -18,7 +18,7 @@ public class Service {
         System.out.println("Service.add() 호출 전에 해야할 일!");
         dao1.insert();
         dao2.insert();
-        dao2.insert();
+        dao3.insert();
         System.out.println("Service.add() 호출 후에 해야할 일!");
     }
 }

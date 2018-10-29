@@ -15,7 +15,7 @@ public class ServiceImpl implements Service {
     public void add() {
         dao1.insert();
         dao2.insert();
-        dao2.insert();
+        dao3.insert();
     }
 }
 

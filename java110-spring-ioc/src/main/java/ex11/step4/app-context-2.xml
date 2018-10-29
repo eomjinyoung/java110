@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+
+    <context:component-scan base-package="ex11.step4"/>
+
+    <!-- AOP 필터 객체 생성 -->
+    <bean id="myAdvice" class="ex11.step4.MyAdvice"/>
+    
+    <!-- AOP 적용 -->
+    <aop:config>
+    
+        <!-- 어느 pointcut에 어떤 advice를 삽입해야 하는지 설정한다. -->
+        <aop:aspect id="aspect1" ref="myAdvice">
+            
+            <!-- pointcut을 재사용하지 않는다면 다음과 같이 바로 설정할 수 있다.  -->
+            <aop:before method="advice2" 
+                pointcut="execution(* ex11.step4.ServiceImpl.add*(..))"/>
+                
+            <aop:before method="advice1" 
+                pointcut="execution(* ex11.step4.ServiceImpl.delete(..))"/>
+        </aop:aspect>
+        
+    </aop:config>
+    
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
