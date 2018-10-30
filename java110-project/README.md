@@ -1,6 +1,17 @@
 # java110-project
 
-## java110-project (tag: v6.7)
+## v6.8
+
+- Spring 트랜잭션 적용하기
+    - 스프링 트랜잭션은 AOP 기술을 사용한다.
+- 작업
+    - 'aspectjweaver' 라이브러리를 추가한다.
+    - Spring 트랜잭션 관리자를 Java Config로 등록한다.
+    - 트랜잭션 관리자를 활성화하는 애노테이션을 Java Config에 설정한다.
+      즉 @EnableTransactionManagement 애노테이션 추가한다.
+    - 트랜잭션으로 묶어서 DB SQL을 실행해야 하는 메서드에 @Transactional 애노테이션을 붙인다.
+
+## v6.7
 
 - 기존 라이브러리를 Spring WebMVC로 교체하기
 - 작업
