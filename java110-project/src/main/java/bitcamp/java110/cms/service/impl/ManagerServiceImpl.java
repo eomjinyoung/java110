@@ -28,9 +28,11 @@ public class ManagerServiceImpl implements ManagerService {
             
             // 이 메서드를 호출하는 쪽에 이미 트랜잭션이 있으면 그 트랜잭션에 소속되게 하고,
             // 없으면 새 트랜잭션을 만들서 수행한다.
+            // 기본 값은 Propagation.REQUIRED 이다. 
             propagation=Propagation.REQUIRED,
             
             // 메서드를 실행 중에 Exception 예외가 발생하면 rollback을 수행한다.
+            // 기본 값은 Exception.class 이다.
             rollbackFor=Exception.class)
     @Override
     public void add(Manager manager) {
@@ -61,6 +63,7 @@ public class ManagerServiceImpl implements ManagerService {
         return managerDao.findByNo(no);
     }
     
+    @Transactional
     @Override
     public void delete(int no) {
         if (managerDao.delete(no) == 0) {
