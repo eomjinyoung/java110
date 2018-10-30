@@ -19,8 +19,8 @@ table, th, td {
 
 <jsp:include page="../header.jsp"></jsp:include>
 
-<h1>학생 목록(MVC)</h1>
-<p><a href='add'>추가</a></p>
+<h1>학생 목록</h1>
+<p><a href='form'>추가</a></p>
 <table>
 <thead>
 <tr>

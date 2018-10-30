@@ -49,16 +49,20 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         
         <!-- 프론트 컨트롤러가 사용할 IoC 컨테이너 클래스를 지정하기 -->
+        <!--  
         <init-param>
             <param-name>contextClass</param-name>
             <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
         </init-param>
+        -->
         
         <!-- 위에서 지정한 IoC 컨테이너가 사용할 Java config 클래스 -->
+        <!--  
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>bitcamp.java110.cms.AppConfig</param-value>
         </init-param>
+        -->
         
         <load-on-startup>1</load-on-startup>
 

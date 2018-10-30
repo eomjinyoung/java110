@@ -1,35 +1,39 @@
 package bitcamp.java110.cms.web;
 
+import java.io.File;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import bitcamp.java110.cms.domain.Student;
 import bitcamp.java110.cms.service.StudentService;
 
 @Controller
+@RequestMapping("/student")
 public class StudentController { 
     
-    @Autowired
     StudentService studentService;
-    
-    @Autowired
     ServletContext sc;
     
-    @RequestMapping("/student/list")
-    public String list(
-            @RequestParam(value="pageNo",defaultValue="1") int pageNo,
-            @RequestParam(value="pageSize",defaultValue="3") int pageSize,
-            Map<String,Object> map) {
+    public StudentController(StudentService studentService, ServletContext sc) {
+        this.studentService = studentService;
+        this.sc = sc;
+    }
+
+    @GetMapping("list")
+    public void list(
+            @RequestParam(defaultValue="1") int pageNo,
+            @RequestParam(defaultValue="3") int pageSize,
+            Model model) {
 
         if (pageNo < 1)
             pageNo = 1;
@@ -38,33 +42,30 @@ public class StudentController {
             pageSize = 3;
         
         List<Student> list = studentService.list(pageNo, pageSize);
-        map.put("list", list);
-        return "/student/list.jsp";
+        model.addAttribute("list", list);
     }
     
-    @RequestMapping("/student/detail")
-    public String detail(
+    @GetMapping("detail")
+    public void detail(
             int no,
-            Map<String,Object> map) {
+            Model model) {
 
         Student s = studentService.get(no);
-        map.put("student", s);
-        return "/student/detail.jsp";
+        model.addAttribute("student", s);
     }
     
-    @RequestMapping("/student/add")
+    @GetMapping("form")
+    public void form() {
+    }
+    
+    @PostMapping("add")
     public String add(
             Student student,
-            HttpServletRequest request) throws Exception {
+            MultipartFile file1) throws Exception {
         
-        if (request.getMethod().equals("GET")) {
-            return "/student/form.jsp";
-        }
-
-        Part part = request.getPart("file1");
-        if (part.getSize() > 0) {
+        if (file1.getSize() > 0) {
             String filename = UUID.randomUUID().toString();
-            part.write(sc.getRealPath("/upload/" + filename));
+            file1.transferTo(new File(sc.getRealPath("/upload/" + filename)));
             student.setPhoto(filename);
         }
         
@@ -74,7 +75,7 @@ public class StudentController {
         
     }
     
-    @RequestMapping("/student/delete")
+    @GetMapping("delete")
     public String delete(int no) throws Exception {
         
         studentService.delete(no);

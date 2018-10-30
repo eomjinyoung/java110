@@ -12,7 +12,7 @@
 Member loginUser = (Member)session.getAttribute("loginUser");
 if (loginUser == null) {
 %>
-        <li><a href='/app/auth/login'>로그인</a></li>
+        <li><a href='/app/auth/form'>로그인</a></li>
 <%
 } else {
     String loginType = "학생";

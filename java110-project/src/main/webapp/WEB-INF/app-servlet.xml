@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- XML 설정 파일에서는 페이지 컨트롤러 객체만 생성한다. -->
+    <context:component-scan base-package="bitcamp.java110.cms"/>
+    
+    <mvc:annotation-driven enable-matrix-variables="true"/>
+
+    <!-- Servlet 3.0에서 제공하는 multipart/form-data 처리기를 사용하지 않고
+         (서블릿 컨테이너가 multipart/form-data를 처리하는 것이 아니라)
+         Spring WebMVC 프레임워크에서 직접 처리하고 싶다면,  
+         다음 객체를 등록하라!
+    -->
+    <!--  
+    <bean id="multipartResolver" 
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+        <property name="maxUploadSize" value="2000000" /> 
+    </bean>
+    -->
+    
+    <!-- 기존의 ViewResolver를 교체하기 
+         이 ViewResolver는 request handler가 리턴한 경로의 
+         앞, 뒤에 공통 경로를 추가하여 JSP 파일을 찾아 실행한다.
+    -->
+    <bean id="viewResolver" 
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
