@@ -1,5 +1,13 @@
 # java110-project
 
+## v7.0
+
+- 권한 검사에 필터 대신에 인터셉터 사용하기
+- WebMvcConfigurer 구현
+- 작업
+    - AuthInterceptor 클래스 생성한다.
+    - WebConfig 클래스로 MVC 설정한다.
+
 ## v6.9
 
 - Spring WebMVC 정리
@@ -9,6 +17,7 @@
     - /WEB-INF/web.xml에서 프론트 컨트롤러의 설정 파일 정보 지정하기
     - JSP를 /WEB-INF/jsp/ 폴더로 옮긴다.
     - 페이지 컨트롤러의 리턴 값을 변경한다.
+    
 
 ## v6.8
 

@@ -13,8 +13,12 @@
     <!-- XML 설정 파일에서는 페이지 컨트롤러 객체만 생성한다. -->
     <context:component-scan base-package="bitcamp.java110.cms"/>
     
+    <!-- WebConfig 클래스에 설정했기 때문에 다음 태그는 제거한다. -->
+    <!--  
     <mvc:annotation-driven enable-matrix-variables="true"/>
-
+    -->
+    
+    
     <!-- Servlet 3.0에서 제공하는 multipart/form-data 처리기를 사용하지 않고
          (서블릿 컨테이너가 multipart/form-data를 처리하는 것이 아니라)
          Spring WebMVC 프레임워크에서 직접 처리하고 싶다면,  
