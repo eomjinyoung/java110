@@ -2,6 +2,8 @@
 
 ## 프로젝트 저장소
 
+https://github.com/kukyanghoon/java110-team-project.git
+
 
 ## 팀원
 국양훈, 현경훈, 권형은, 김종규, 안진호

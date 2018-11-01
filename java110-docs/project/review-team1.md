@@ -2,6 +2,7 @@
 
 ## 프로젝트 저장소
 
+https://github.com/moo-93/java110-team-project.git
 
 ## 팀원
 황무현, 이용찬, 김희정, 이광호, 이태형, 서영준
