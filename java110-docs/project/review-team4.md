@@ -1,5 +1,9 @@
 # 자바110기 - Modern Class
 
+## 프로젝트 저장소
+
+https://github.com/carryyun/java110-team-project
+
 ## 팀원
 윤건희, 송서현, 김영록, 김우제, 이세영, 고정은
 
