@@ -1,0 +1,28 @@
+CREATE DATABASE projectdb
+  CHARACTER SET utf8
+  COLLATE utf8_general_ci;
+  
+CREATE USER 'project'@'localhost' IDENTIFIED BY '1111';
+CREATE USER 'project'@'%' IDENTIFIED BY '1111';
+
+GRANT ALL ON projectdb.* TO 'project'@'localhost';
+GRANT ALL ON projectdb.* TO 'project'@'%';
+
+
+
+
+
+
+CREATE DATABASE studydb
+  CHARACTER SET utf8
+  COLLATE utf8_general_ci;
+  
+CREATE USER 'study'@'localhost' IDENTIFIED BY '1111';
+CREATE USER 'study'@'%' IDENTIFIED BY '1111';
+
+GRANT ALL ON studydb.* TO 'study'@'localhost';
+GRANT ALL ON studydb.* TO 'study'@'%';
+
+
+
+
