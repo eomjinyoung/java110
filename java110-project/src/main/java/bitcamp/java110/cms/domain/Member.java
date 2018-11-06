@@ -12,6 +12,11 @@ public class Member implements Serializable {
     protected String tel;
     protected String photo;
     
+    @Override
+    public String toString() {
+      return "Member [no=" + no + ", name=" + name + ", email=" + email + ", password=" + password
+          + ", tel=" + tel + ", photo=" + photo + "]";
+    }
     public int getNo() {
         return no;
     }
