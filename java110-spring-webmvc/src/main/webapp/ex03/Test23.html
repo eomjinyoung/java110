@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>동기 요청의 문제점</h1>
+<button id="btn1" type="button">동기 요청하기</button><br>
+<button id="btn2" type="button">테스트 버튼</button>
+<button id="btn3" type="button">비동기 요청하기</button><br>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+
+$("#btn1").click(() => {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'test23.jsp', false);
+    xhr.send();
+    console.log(xhr.responseText);
+});
+
+$("#btn3").click(() => {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.open('GET', 'test23.jsp', true);
+    xhr.send();
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
