@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>매니저 관리</title>
+<link rel='stylesheet' href='/css/common.css'>
+<style>
+table, th, td {
+    border: 1px solid gray;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>비트캠프</h1>
+    <ul>
+<li><a href='/app/auth/form'>로그인</a></li>
+<li><a href='/app/student/list'>학생관리</a></li>
+        <li><a href='/app/teacher/list'>강사관리</a></li>
+        <li><a href='/app/manager/list'>매니저관리</a></li>
+    </ul>
+</header>
+
+<h1>매니저 목록</h1>
+<p><a href='form'>추가</a></p>
+<table id="list-table">
+<thead>
+<tr>
+    <th>번호</th> <th>이름</th> <th>이메일</th> <th>직위</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+<footer>
+    <p>&copy;자바110기</p>
+</footer>
+
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+
+var tbody = $('#list-table');
+
+$.getJSON("/app/json/manager/list", function(data) {
+    var html = "";
+    for (var item of data.list) {
+        html += "<tr>" + 
+	        "<td>" + item.no + "</td>" + 
+	        "<td><a href='detail?no=" + item.no + 
+	        "109'>" + item.name + "</a></td>" + 
+	        "<td>" + item.email + "</td>" + 
+	        "<td>" + item.position + "</td>" + 
+	    "</tr>"; 
+    }
+    tbody.html(html);
+});
+
+</script>
+
+
+</body>
+</html>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

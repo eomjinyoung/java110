@@ -2,6 +2,11 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v7.2)
+
+- HandlebarsJS 자바스크립트 템플릿 엔진 사용법
+
+
 ## java110-project (tag: v7.1)
 
 - 페이스북 로그인 처리하기

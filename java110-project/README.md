@@ -1,5 +1,14 @@
 # java110-project
 
+
+## v7.2
+
+- HandlebarsJS 자바스크립트 템플릿 엔진 사용법
+- 작업
+    - /webapp/package.json
+    - /webapp/manager/list.html
+    - /webapp/manager/list2.html
+    
 ## v7.1
 
 - 페이스북 로그인 처리하기

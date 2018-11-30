@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>매니저 관리</title>
+<link rel='stylesheet' href='/css/common.css'>
+<style>
+table, th, td {
+    border: 1px solid gray;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>비트캠프</h1>
+    <ul>
+<li><a href='/app/auth/form'>로그인</a></li>
+<li><a href='/app/student/list'>학생관리</a></li>
+        <li><a href='/app/teacher/list'>강사관리</a></li>
+        <li><a href='/app/manager/list'>매니저관리</a></li>
+    </ul>
+</header>
+
+<h1>매니저 목록</h1>
+<p><a href='form'>추가</a></p>
+<table id="list-table">
+<thead>
+<tr>
+    <th>번호</th> <th>이름</th> <th>이메일</th> <th>직위</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+<footer>
+    <p>&copy;자바110기</p>
+</footer>
+
+<script id="tr-template" type="text/x-handlebars-template">
+{{#each list}}
+<tr>
+    <td>{{no}}</td>
+    <td><a href='detail?no={{no}}'>{{name}}</a></td>
+    <td>{{email}}</td>
+    <td>{{position}}</td>
+</tr>
+{{/each}}
+</script>
+
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+<script>
+
+var tbody = $('#list-table');
+
+var source = $("#tr-template").html();
+var template = Handlebars.compile(source);
+
+
+$.getJSON("/app/json/manager/list", function(data) {
+    //console.log(template(data))
+    tbody.html(template(data));
+});
+
+</script>
+
+
+</body>
+</html>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
