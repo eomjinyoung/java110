@@ -79,3 +79,6 @@ https://github.com/kukyanghoon/java110-team-project.git
     - 결제 
         - 페이팔 적용
     - 예약 최소
+
+### 3차 구현 리뷰(2018-12-03)
+
