@@ -82,3 +82,6 @@ https://github.com/kukyanghoon/java110-team-project.git
 
 ### 3차 구현 리뷰(2018-12-03)
 
+- 회원 가입
+    - 금융결제원 Open API로 계좌 유효성 검사
+- 지나간 여정/다가올 여정/취소한 여정
