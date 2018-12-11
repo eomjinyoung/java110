@@ -116,3 +116,6 @@ https://github.com/carryyun/java110-team-project
     - 클래스 관리
     - 상품 관리
         - 주문자 목록
+
+### 최종 구현 리뷰(2018-12-11)
+

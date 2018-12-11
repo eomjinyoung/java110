@@ -148,4 +148,6 @@ https://github.com/moo-93/java110-team-project.git
     - 검색 기능 보강
 - 버스커피드
     - 영상 및 사진 등록
-    
+
+### 최종 구현 리뷰(2018-12-11)
+
